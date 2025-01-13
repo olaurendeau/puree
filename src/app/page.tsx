@@ -190,7 +190,7 @@ export default function Home() {
               <div className="flex items-center justify-center h-full">
                 <div className="text-center space-y-3">
                   <h2 className="text-2xl font-medium text-zinc-200">Bienvenue sur purée.ai</h2>
-                  <p className="text-zinc-400">L'IA qui te suggère de ne pas utiliser l'IA</p>
+                  <p className="text-zinc-400">L&apos;IA qui te suggère de ne pas utiliser l&apos;IA</p>
                 </div>
               </div>
             ) : (
