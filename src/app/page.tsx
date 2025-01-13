@@ -11,6 +11,7 @@ type Message = {
 export default function Home() {
   // Remplacer les états individuels par un tableau de messages
   const [messages, setMessages] = useState<Message[]>([]);
+  const [isThinking, setIsThinking] = useState(false);
   // Référence pour le conteneur de messages
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -47,12 +48,25 @@ export default function Home() {
     textarea.style.height = `${newHeight}px`;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     const userInput = (e.target as HTMLFormElement).elements.namedItem('question') as HTMLTextAreaElement;
     if (!userInput.value.trim()) return;
 
+    // Add user message immediately
+    const value = userInput.value;
+    setMessages(prev => [...prev, { role: 'user', content: value }]);
+    
+    // Clear input
+    userInput.value = '';
+    
+    // Start thinking animation
+    setIsThinking(true);
+
+    // Random thinking time between 1 and 3 seconds
+    const thinkingTime = Math.random() * 2000 + 1000;
+    
     const responses = [
       "As-tu pensé à en parler avec quelqu'un ? Une vraie personne en chair et en os ?",
       "Il y a sûrement un bon vieux livre qui traite de ce sujet à la bibliothèque.",
@@ -163,18 +177,14 @@ export default function Home() {
       "Une collection d'insectes pourrait t'éclairer."
     ];
     
+    // Simulate AI thinking
+    await new Promise(resolve => setTimeout(resolve, thinkingTime));
+    
     const randomResponse = responses[Math.floor(Math.random() * responses.length)];
     
-    // Ajouter les nouveaux messages à l'historique
-    const value = userInput.value
-    setMessages(prev => [
-      ...prev,
-      { role: 'user', content: value },
-      { role: 'assistant', content: randomResponse }
-    ]);
-    
-    // Réinitialiser le champ de saisie
-    userInput.value = '';
+    // Add AI response
+    setMessages(prev => [...prev, { role: 'assistant', content: randomResponse }]);
+    setIsThinking(false);
   };
 
   return (
@@ -210,6 +220,20 @@ export default function Home() {
                     </div>
                   </div>
                 ))}
+                
+                {isThinking && (
+                  <div className="flex gap-4 items-start">
+                    <div className="w-8 h-8 rounded-full bg-purple-700 flex items-center justify-center">
+                      <span className="text-sm">🤖</span>
+                    </div>
+                    <div className="flex gap-2">
+                      <span className="w-2 h-2 bg-purple-500 rounded-full animate-bounce [animation-delay:-0.3s]"></span>
+                      <span className="w-2 h-2 bg-purple-500 rounded-full animate-bounce [animation-delay:-0.15s]"></span>
+                      <span className="w-2 h-2 bg-purple-500 rounded-full animate-bounce"></span>
+                    </div>
+                  </div>
+                )}
+                
                 {/* Élément invisible pour le scroll */}
                 <div ref={messagesEndRef} />
               </>
