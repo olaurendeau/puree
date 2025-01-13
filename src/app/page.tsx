@@ -17,7 +17,6 @@ export default function Home() {
 
   useEffect(() => {
     if (!isThinking) {
-      // Petit délai pour s'assurer que le DOM est mis à jour
       setTimeout(() => {
         chatInputRef.current?.focus();
       }, 0);
@@ -26,22 +25,18 @@ export default function Home() {
 
   const handleSubmit = async (content: string) => {
     try {
-      // Add user message
       const newMessages: Message[] = [...messages, { role: 'user', content }];
       setMessages(newMessages);
       setIsThinking(true);
-
-      // Get AI response
+      
       const response = await messageService.generateResponse(newMessages);
       
-      // Add AI response
       setMessages([...newMessages, { 
         role: 'assistant', 
         content: response 
       }]);
     } catch (error) {
       console.error('Error in chat:', error);
-      // Add error message
       setMessages(prev => [...prev, { 
         role: 'assistant', 
         content: "Désolé, j'ai rencontré une erreur. Peux-tu réessayer ?" 
@@ -52,10 +47,10 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0C0C0C] text-white">
+    <div className="flex flex-col h-[100dvh] bg-[#0C0C0C] text-white">
       <Header />
       
-      <main className="flex flex-col h-[calc(100vh-3.5rem)]">
+      <main className="flex-1 flex flex-col min-h-0">
         <div className="flex-1 overflow-auto px-4 py-6">
           <div className="max-w-3xl mx-auto space-y-6">
             {messages.length === 0 ? (
@@ -82,7 +77,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="border-t border-zinc-800 p-4">
+        <div className="border-t border-zinc-800 p-4 bg-[#0C0C0C]">
           <ChatInput ref={chatInputRef} onSubmit={handleSubmit} isThinking={isThinking} />
         </div>
       </main>
