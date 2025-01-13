@@ -25,19 +25,30 @@ export default function Home() {
   }, [isThinking]);
 
   const handleSubmit = async (content: string) => {
-    // Add user message
-    setMessages(prev => [...prev, { role: 'user', content }]);
-    setIsThinking(true);
+    try {
+      // Add user message
+      const newMessages: Message[] = [...messages, { role: 'user', content }];
+      setMessages(newMessages);
+      setIsThinking(true);
 
-    // Simulate AI thinking
-    await new Promise(resolve => setTimeout(resolve, messageService.getThinkingTime()));
-    
-    // Add AI response
-    setMessages(prev => [...prev, { 
-      role: 'assistant', 
-      content: messageService.getRandomResponse() 
-    }]);
-    setIsThinking(false);
+      // Get AI response
+      const response = await messageService.generateResponse(newMessages);
+      
+      // Add AI response
+      setMessages([...newMessages, { 
+        role: 'assistant', 
+        content: response 
+      }]);
+    } catch (error) {
+      console.error('Error in chat:', error);
+      // Add error message
+      setMessages(prev => [...prev, { 
+        role: 'assistant', 
+        content: "Désolé, j'ai rencontré une erreur. Peux-tu réessayer ?" 
+      }]);
+    } finally {
+      setIsThinking(false);
+    }
   };
 
   return (

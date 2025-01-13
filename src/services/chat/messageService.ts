@@ -1,12 +1,15 @@
 import { Message } from '@/domain/chat/types';
-import { AI_RESPONSES, THINKING_TIME } from '@/domain/chat/constants';
+import { generateAIResponse } from '@/app/actions/chat';
 
-export const messageService = {
-  getRandomResponse: () => {
-    return AI_RESPONSES[Math.floor(Math.random() * AI_RESPONSES.length)];
-  },
+class MessageService {
+  async generateResponse(messages: Message[]): Promise<string> {
+    try {
+      return await generateAIResponse(messages);
+    } catch (error) {
+      console.error('Error generating response:', error);
+      return "Désolé, j'ai rencontré une erreur. Peux-tu réessayer ?";
+    }
+  }
+}
 
-  getThinkingTime: () => {
-    return Math.random() * (THINKING_TIME.MAX - THINKING_TIME.MIN) + THINKING_TIME.MIN;
-  },
-}; 
+export const messageService = new MessageService(); 

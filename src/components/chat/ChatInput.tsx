@@ -1,5 +1,5 @@
 import { ChatInputProps } from '@/domain/chat/types';
-import { useState, useRef, useImperativeHandle, forwardRef } from 'react';
+import { useRef, useImperativeHandle, forwardRef } from 'react';
 
 export const ChatInput = forwardRef<{ focus: () => void }, ChatInputProps>(({ onSubmit, isThinking }, ref) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -67,4 +67,6 @@ export const ChatInput = forwardRef<{ focus: () => void }, ChatInputProps>(({ on
       </div>
     </form>
   );
-}); 
+});
+
+ChatInput.displayName = 'ChatInput'; 
