@@ -190,7 +190,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#0C0C0C] text-white">
       <div className="h-14 border-b border-zinc-800 flex items-center px-4">
-        <h1 className="text-xl font-semibold">purée.ai</h1>
+        <h1 className="text-xl font-semibold">purée</h1>
       </div>
       
       <main className="flex flex-col h-[calc(100vh-3.5rem)]">
@@ -199,7 +199,7 @@ export default function Home() {
             {messages.length === 0 ? (
               <div className="flex items-center justify-center h-full">
                 <div className="text-center space-y-3">
-                  <h2 className="text-2xl font-medium text-zinc-200">Bienvenue sur purée.ai</h2>
+                  <h2 className="text-2xl font-medium text-zinc-200">Bienvenue sur purée</h2>
                   <p className="text-zinc-400">L&apos;IA qui te suggère de ne pas utiliser l&apos;IA</p>
                 </div>
               </div>
