@@ -1,5 +1,6 @@
-import { toPng } from 'html-to-image';
+import { toJpeg } from 'html-to-image';
 import { Message } from '@/domain/chat/types';
+import { generateShareSummary } from '@/app/actions/chat';
 
 interface ShareButtonProps {
   userMessage: Message;
@@ -21,7 +22,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
         background-color: #0C0C0C;
         padding: 32px;
         color: white;
-        width: 800px;
+        width: 400px;
         font-family: system-ui, -apple-system, sans-serif;
         display: inline-block;
       ">
@@ -37,7 +38,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
               justify-content: center;
               flex-shrink: 0;
             ">
-              <span style="font-size: 14px;">👤</span>
+              <span style="font-size: 18px;">👤</span>
             </div>
             <div style="flex: 1;">
               <pre style="
@@ -60,7 +61,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
               justify-content: center;
               flex-shrink: 0;
             ">
-              <span style="font-size: 14px;">🤖</span>
+              <span style="font-size: 18px;">🤖</span>
             </div>
             <div style="flex: 1;">
               <pre style="
@@ -91,7 +92,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
       await new Promise(resolve => setTimeout(resolve, 100));
 
       const contentElement = element.firstElementChild as HTMLElement;
-      const dataUrl = await toPng(contentElement, {
+      const dataUrl = await toJpeg(contentElement, {
         quality: 0.95,
         backgroundColor: '#0C0C0C',
         style: {
@@ -111,23 +112,24 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
   const handleShare = async () => {
     try {
       const imageUrl = await generateImage();
+      const summary = await generateShareSummary([userMessage, assistantMessage]);
       
       // Vérifier si l'API de partage est disponible
       if (navigator.share && /mobile|android|iphone|ipad/i.test(navigator.userAgent)) {
         // Convertir le Data URL en Blob
         const response = await fetch(imageUrl);
         const blob = await response.blob();
-        const file = new File([blob], 'puree-conversation.png', { type: 'image/png' });
+        const file = new File([blob], `${summary.filename}.jpeg`, { type: 'image/jpeg' });
 
         await navigator.share({
-          title: 'Conversation purée',
-          text: 'Une conversation avec purée',
+          title: summary.title,
+          text: summary.text,
           files: [file],
         });
       } else {
         // Fallback : téléchargement direct
         const link = document.createElement('a');
-        link.download = 'puree-conversation.png';
+        link.download = `${summary.filename}.jpeg`;
         link.href = imageUrl;
         link.click();
       }
