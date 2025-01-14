@@ -1,8 +1,5 @@
 import { getS3Data } from '@/app/actions/s3';
-import { S3 } from 'aws-sdk';
 import type { NextApiRequest, NextApiResponse } from 'next';
-
-const s3 = new S3();
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const { filename } = req.query;
