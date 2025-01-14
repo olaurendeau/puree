@@ -1,7 +1,6 @@
 import { toJpeg } from 'html-to-image';
 import { Message } from '@/domain/chat/types';
 import { generateShareSummary } from '@/app/actions/chat';
-import { uploadToS3 } from '@/app/actions/s3';
 
 interface ShareButtonProps {
   userMessage: Message;
@@ -115,29 +114,21 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
         const imageUrl = await generateImage();
         const summary = await generateShareSummary([userMessage, assistantMessage]);
 
-        const base64Data = imageUrl.replace(/^data:image\/jpeg;base64,/, '');
-        const filename = `${summary.filename}.jpeg`;
-
-        await uploadToS3(base64Data, filename);
-
-        const appUrl = `${window.location.origin}/api/share-image?filename=${filename}`;
-
         if (navigator.share && /mobile|android|iphone|ipad/i.test(navigator.userAgent)) {
-            if (/iphone|ipad/i.test(navigator.userAgent)) {
-                await navigator.share({
-                    url: appUrl,
-                });
-            } else {
-                await navigator.share({
-                    url: appUrl,
-                    title: summary.title,
-                    text: summary.text,
-                });
-            }
-        } else {
+            const response = await fetch(imageUrl);
+            const blob = await response.blob();
+            const file = new File([blob], `${summary.filename}.jpeg`, { type: 'image/jpeg' });
+    
+            await navigator.share({
+              files: [file],
+              title: summary.title,
+              text: summary.text,
+            });
+          } else {
+            // Fallback : téléchargement direct
             const link = document.createElement('a');
-            link.href = appUrl;
-            link.target = '_blank';
+            link.download = `${summary.filename}.jpeg`;
+            link.href = imageUrl;
             link.click();
         }
         } catch (error) {
