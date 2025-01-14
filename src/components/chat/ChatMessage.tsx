@@ -1,6 +1,9 @@
 import { ChatMessageProps } from '@/domain/chat/types';
+import { ShareButton } from './ShareButton';
 
-export const ChatMessage = ({ message }: ChatMessageProps) => {
+export const ChatMessage = ({ message, previousMessage }: ChatMessageProps) => {
+  const showShareButton = message.role === 'assistant' && previousMessage?.role === 'user';
+
   return (
     <div className="flex gap-4 items-start">
       <div className={`w-8 h-8 rounded-full ${
@@ -13,6 +16,14 @@ export const ChatMessage = ({ message }: ChatMessageProps) => {
           {message.content}
         </pre>
       </div>
+      {showShareButton && previousMessage && (
+        <div className="flex-shrink-0 pt-1">
+          <ShareButton
+            userMessage={previousMessage}
+            assistantMessage={message}
+          />
+        </div>
+      )}
     </div>
   );
 }; 

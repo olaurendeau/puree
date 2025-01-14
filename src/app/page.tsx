@@ -69,6 +69,7 @@ export default function Home() {
                   <ChatMessage 
                     key={`${message.role}-${index}-${message.content.substring(0, 10)}`}
                     message={message}
+                    previousMessage={index > 0 ? messages[index - 1] : undefined}
                   />
                 ))}
                 

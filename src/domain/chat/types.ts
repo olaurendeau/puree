@@ -10,6 +10,7 @@ export type ChatInputProps = {
 
 export type ChatMessageProps = {
   message: Message;
+  previousMessage?: Message;
 };
 
 export type ChatContainerProps = {
