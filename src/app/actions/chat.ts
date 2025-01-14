@@ -62,7 +62,7 @@ export async function generateShareSummary(messages: Message[]): Promise<ShareSu
         const response = await anthropic.messages.create({
             model: 'claude-3-haiku-20240307',
             system: `Vous devez générer un titre court et accrocheur ainsi qu'un texte de synthèse pour partager cet échange.
-                    Le nom du fichier doit être court (max 30 caractères) et le titre doit être court (max 50 caractères) 
+                    Le nom du fichier doit être court et comporter uniquement des caractères alphanumériques et des tirets (max 30 caractères) et le titre doit être court (max 50 caractères) 
                     et le texte doit être une synthèse concise (max 100 caractères).
                     Répondez uniquement avec un objet JSON contenant trois propriétés :
                     - filename: le nom du fichier à générer

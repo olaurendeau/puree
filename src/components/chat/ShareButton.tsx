@@ -115,22 +115,22 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
       const imageUrl = await generateImage();
       const summary = await generateShareSummary([userMessage, assistantMessage]);
 
-      // Extraire la partie base64 de l'URL de données
       const base64Data = imageUrl.replace(/^data:image\/jpeg;base64,/, '');
+      const filename = `${summary.filename}.jpeg`;
 
-      // Télécharger sur S3 en utilisant la chaîne base64
-      const s3Url = await uploadToS3(base64Data, `${summary.filename}.jpeg`);
+      await uploadToS3(base64Data, filename);
+
+      const appUrl = `${window.location.origin}/api/share-image?filename=${filename}`;
 
       if (navigator.share && /mobile|android|iphone|ipad/i.test(navigator.userAgent)) {
         await navigator.share({
           title: summary.title,
           text: summary.text,
-          url: s3Url,
+          url: appUrl,
         });
       } else {
-        // Fallback : téléchargement direct
         const link = document.createElement('a');
-        link.href = s3Url;
+        link.href = appUrl;
         link.target = '_blank';
         link.click();
       }
