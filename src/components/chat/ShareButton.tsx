@@ -139,7 +139,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
   return (
     <button
       onClick={handleShare}
-      className="text-zinc-500 hover:text-zinc-300 transition-colors"
+      className="text-purple-500 hover:text-purple-300 transition-colors"
       aria-label="Partager cet échange"
     >
       <svg
