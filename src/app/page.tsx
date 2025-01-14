@@ -47,11 +47,11 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col h-[100dvh] bg-[#0C0C0C] text-white">
+    <div className="fixed inset-0 flex flex-col bg-[#0C0C0C] text-white overflow-hidden">
       <Header />
       
       <main className="flex-1 flex flex-col min-h-0">
-        <div className="flex-1 overflow-auto px-4 py-6">
+        <div className="flex-1 overflow-y-auto px-4 py-6 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent">
           <div className="max-w-3xl mx-auto space-y-6">
             {messages.length === 0 ? (
               <div className="flex items-center justify-center h-full">

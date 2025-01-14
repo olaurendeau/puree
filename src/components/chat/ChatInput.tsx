@@ -48,14 +48,20 @@ export const ChatInput = forwardRef<{ focus: () => void }, ChatInputProps>(({ on
           ref={textareaRef}
           name="question"
           placeholder="Pose ta question à l'IA..."
-          className="w-full p-4 pr-24 bg-zinc-900 border border-zinc-700 rounded-lg focus:outline-none focus:border-purple-500 resize-none overflow-y-auto"
+          className="w-full p-4 pr-24 bg-zinc-900 border border-zinc-700 rounded-lg 
+            focus:outline-none focus:border-purple-500 resize-none overflow-y-auto
+            scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent"
           rows={1}
           required
           autoFocus
           disabled={isThinking}
           onKeyDown={handleKeyDown}
           onInput={handleTextareaInput}
-          style={{ minHeight: '60px', maxHeight: '120px' }}
+          style={{
+            minHeight: '60px',
+            maxHeight: '120px',
+            lineHeight: '24px'
+          }}
         />
         <button
           type="submit"
