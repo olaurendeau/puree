@@ -56,7 +56,7 @@ export default function Home() {
             {messages.length === 0 ? (
               <div className="flex items-center justify-center h-full">
                 <div className="text-center space-y-3">
-                  <h2 className="text-2xl font-medium text-zinc-200">Bienvenue sur purée</h2>
+                  <h2 className="text-2xl font-medium text-zinc-200">Bienvenue sur Purée</h2>
                   <p className="text-zinc-400">L&apos;IA qui te suggère de ne pas utiliser l&apos;IA</p>
                 </div>
               </div>

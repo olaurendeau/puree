@@ -13,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'purée - L\'IA qui te suggère de ne pas utiliser l\'IA',
+  title: 'purée.chat - L\'IA qui te suggère de ne pas utiliser l\'IA',
   description: 'Une IA ironique qui encourage à trouver des solutions sans IA',
+  metadataBase: new URL('https://puree.chat'),
   icons: {
     icon: [
       {
