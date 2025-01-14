@@ -111,33 +111,39 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
   };
 
   const handleShare = async () => {
-    try {
-      const imageUrl = await generateImage();
-      const summary = await generateShareSummary([userMessage, assistantMessage]);
+        try {
+        const imageUrl = await generateImage();
+        const summary = await generateShareSummary([userMessage, assistantMessage]);
 
-      const base64Data = imageUrl.replace(/^data:image\/jpeg;base64,/, '');
-      const filename = `${summary.filename}.jpeg`;
+        const base64Data = imageUrl.replace(/^data:image\/jpeg;base64,/, '');
+        const filename = `${summary.filename}.jpeg`;
 
-      await uploadToS3(base64Data, filename);
+        await uploadToS3(base64Data, filename);
 
-      const appUrl = `${window.location.origin}/api/share-image?filename=${filename}`;
+        const appUrl = `${window.location.origin}/api/share-image?filename=${filename}`;
 
-      if (navigator.share && /mobile|android|iphone|ipad/i.test(navigator.userAgent)) {
-        await navigator.share({
-          title: summary.title,
-          text: summary.text,
-          url: appUrl,
-        });
-      } else {
-        const link = document.createElement('a');
-        link.href = appUrl;
-        link.target = '_blank';
-        link.click();
-      }
-    } catch (error) {
-      console.warn('Erreur lors du partage:', error);
-    }
-  };
+        if (navigator.share && /mobile|android|iphone|ipad/i.test(navigator.userAgent)) {
+            if (/iphone|ipad/i.test(navigator.userAgent)) {
+                await navigator.share({
+                    url: appUrl,
+                });
+            } else {
+                await navigator.share({
+                    url: appUrl,
+                    title: summary.title,
+                    text: summary.text,
+                });
+            }
+        } else {
+            const link = document.createElement('a');
+            link.href = appUrl;
+            link.target = '_blank';
+            link.click();
+        }
+        } catch (error) {
+        console.warn('Erreur lors du partage:', error);
+        }
+    };
 
   return (
     <button
