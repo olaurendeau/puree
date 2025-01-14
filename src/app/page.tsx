@@ -47,16 +47,16 @@ export default function Home() {
   };
 
   return (
-    <div className="fixed inset-0 flex flex-col bg-[#0C0C0C] text-white overflow-hidden">
+    <div className="flex flex-col h-[100dvh] bg-[#0C0C0C] text-white">
       <Header />
       
       <main className="flex-1 flex flex-col min-h-0">
-        <div className="flex-1 overflow-y-auto px-4 py-6 scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent">
+        <div className="flex-1 overflow-auto px-4 py-6">
           <div className="max-w-3xl mx-auto space-y-6">
             {messages.length === 0 ? (
               <div className="flex items-center justify-center h-full">
                 <div className="text-center space-y-3">
-                  <h2 className="text-2xl font-medium text-zinc-200">Bienvenue sur Purée</h2>
+                  <h2 className="text-2xl font-medium text-zinc-200">Bienvenue sur purée</h2>
                   <p className="text-zinc-400">L&apos;IA qui te suggère de ne pas utiliser l&apos;IA</p>
                 </div>
               </div>
