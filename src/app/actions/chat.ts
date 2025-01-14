@@ -82,7 +82,7 @@ export async function generateShareSummary(messages: Message[]): Promise<ShareSu
             summary = JSON.parse(jsonResponse);
             summary.filename = `puree-${summary.filename}`;
             summary.title = `puree.chat - ${summary.title}`;
-            summary.text = `${summary.text}\n Généré par puree.chat`;
+            summary.text = `${summary.text}\nGénéré avec https://puree.chat`;
         }
 
     } catch (error) {

@@ -1,6 +1,7 @@
 import { toJpeg } from 'html-to-image';
 import { Message } from '@/domain/chat/types';
 import { generateShareSummary } from '@/app/actions/chat';
+import { uploadToS3 } from '@/app/actions/s3';
 
 interface ShareButtonProps {
   userMessage: Message;
@@ -80,7 +81,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
           color: #71717a;
           text-align: right;
         ">
-          Généré par purée - https://puree.chat
+          Généré avec purée - https://puree.chat
         </div>
       </div>
     `;
@@ -113,24 +114,24 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
     try {
       const imageUrl = await generateImage();
       const summary = await generateShareSummary([userMessage, assistantMessage]);
-      
-      // Vérifier si l'API de partage est disponible
-      if (navigator.share && /mobile|android|iphone|ipad/i.test(navigator.userAgent)) {
-        // Convertir le Data URL en Blob
-        const response = await fetch(imageUrl);
-        const blob = await response.blob();
-        const file = new File([blob], `${summary.filename}.jpeg`, { type: 'image/jpeg' });
 
+      // Extraire la partie base64 de l'URL de données
+      const base64Data = imageUrl.replace(/^data:image\/jpeg;base64,/, '');
+
+      // Télécharger sur S3 en utilisant la chaîne base64
+      const s3Url = await uploadToS3(base64Data, `${summary.filename}.jpeg`);
+
+      if (navigator.share && /mobile|android|iphone|ipad/i.test(navigator.userAgent)) {
         await navigator.share({
           title: summary.title,
           text: summary.text,
-          files: [file],
+          url: s3Url,
         });
       } else {
         // Fallback : téléchargement direct
         const link = document.createElement('a');
-        link.download = `${summary.filename}.jpeg`;
-        link.href = imageUrl;
+        link.href = s3Url;
+        link.target = '_blank';
         link.click();
       }
     } catch (error) {
