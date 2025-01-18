@@ -54,7 +54,7 @@ export default function Home() {
           <section className="flex flex-col items-center justify-center flex-1 px-4" aria-label="Welcome section">
             <div className="text-center space-y-3 mb-6">
               <h1 className="text-2xl font-medium text-zinc-200">Bienvenue sur purée</h1>
-              <p className="text-zinc-400">L&apos;IA qui te décourage d'utiliser l&apos;IA</p>
+              <p className="text-zinc-400">L&apos;IA qui te décourage d&apos;utiliser l&apos;IA</p>
             </div>
             <div className="w-full max-w-3xl">
               <ChatInput ref={chatInputRef} onSubmit={handleSubmit} isThinking={isThinking} />

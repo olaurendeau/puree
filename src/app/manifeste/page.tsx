@@ -12,8 +12,8 @@ export default function Manifeste() {
         <section className="space-y-4">
           <h2 className="text-xl font-semibold text-purple-400">Pourquoi purée ?</h2>
           <p>
-            purée.chat est né d'une réflexion sur l'avenir du web et de nos contenus numériques. 
-            Dans un monde où l'IA génère et "optimise" de plus en plus de contenu, nous avons imaginé 
+            purée.chat est né d&apos;une réflexion sur l&apos;avenir du web et de nos contenus numériques. 
+            Dans un monde où l&apos;IA génère et &quot;optimise&quot; de plus en plus de contenu, nous avons imaginé 
             un futur où tout deviendrait lisse, homogène et consensuel... comme de la purée.
           </p>
         </section>
@@ -21,13 +21,13 @@ export default function Manifeste() {
         <section className="space-y-4">
           <h2 className="text-xl font-semibold text-purple-400">Notre mission</h2>
           <p>
-            À travers l'humour et l'absurde, nous invitons à réfléchir sur :
+            À travers l&apos;humour et l&apos;absurde, nous invitons à réfléchir sur :
           </p>
           <ul className="list-disc list-inside space-y-2 pl-4">
-            <li>L'uniformisation croissante des contenus en ligne</li>
-            <li>La perte de la diversité et de l'originalité humaine</li>
-            <li>Les dangers d'un web trop "lisse" et consensuel</li>
-            <li>L'importance de préserver des voix authentiques et imparfaites</li>
+            <li>L&apos;uniformisation croissante des contenus en ligne</li>
+            <li>La perte de la diversité et de l&apos;originalité humaine</li>
+            <li>Les dangers d&apos;un web trop &quot;lisse&quot; et consensuel</li>
+            <li>L&apos;importance de préserver des voix authentiques et imparfaites</li>
           </ul>
         </section>
 
@@ -35,9 +35,9 @@ export default function Manifeste() {
           <h2 className="text-xl font-semibold text-purple-400">Comment ça marche ?</h2>
           <p>
             Notre IA est volontairement absurde, comme un miroir déformant de cette tendance à 
-            l'uniformisation. Elle nous rappelle, par l'absurde, l'importance de préserver 
-            l'authenticité et la diversité dans notre expression numérique, plutôt que de tout 
-            réduire en "purée digitale".
+            l&apos;uniformisation. Elle nous rappelle, par l&apos;absurde, l&apos;importance de préserver 
+            l&apos;authenticité et la diversité dans notre expression numérique, plutôt que de tout 
+            réduire en &quot;purée digitale&quot;.
           </p>
         </section>
 
@@ -76,7 +76,7 @@ export default function Manifeste() {
                 d="M15 19l-7-7 7-7"
               />
             </svg>
-            Retour à l'accueil
+            Retour à l&apos;accueil
           </Link>
         </div>
         </div>
