@@ -47,7 +47,7 @@ export const ChatInput = forwardRef<{ focus: () => void }, ChatInputProps>(({ on
         <textarea
           ref={textareaRef}
           name="question"
-          placeholder="Pose ta question à l'IA..."
+          placeholder="Pose ta question à la purée..."
           className="w-full p-4 pr-24 bg-zinc-900 border border-zinc-700 rounded-lg 
             focus:outline-none focus:border-purple-500 resize-none overflow-y-auto
             scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent"
