@@ -49,7 +49,6 @@ export default function Home() {
   return (
     <div className="flex flex-col h-[100dvh] bg-[#0C0C0C] text-white">
       <Header />
-      
       <main className="flex-1 flex flex-col min-h-0" role="main">
         {messages.length === 0 ? (
           <section className="flex flex-col items-center justify-center flex-1 px-4" aria-label="Welcome section">
