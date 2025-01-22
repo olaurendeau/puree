@@ -116,7 +116,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
     try {
       sendGAEvent('event', 'share_button_clicked');
       setIsModalOpen(true);
-      setMessage("Partage en cours...");
+      setMessage(null);
       
       const imageUrl = await generateImage();
       setPreviewUrl(imageUrl);
@@ -223,20 +223,16 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
               </svg>
             </button>
             
-            <h2 className="text-xl font-semibold text-zinc-100 mb-4">
-                Prévisualisation du partage
-            </h2>
-            <div>
-                <div className="relative aspect-[4/3] bg-black/50 rounded-lg overflow-hidden mt-6">
-                {previewUrl && (
-                    <img
-                    src={previewUrl}
-                        alt="Prévisualisation du partage"
-                    className="w-full h-full object-contain"
-                    />
-                )}
-                </div>
+            <div className="relative aspect-[4/3] bg-black/50 rounded-lg overflow-hidden mt-6">
+            {previewUrl && (
+                <img
+                src={previewUrl}
+                    alt="Prévisualisation du partage"
+                className="w-full h-full object-contain"
+                />
+            )}
             </div>
+            
             {message && (
               <p className="mt-4 text-zinc-300 text-sm">
                 {message}
