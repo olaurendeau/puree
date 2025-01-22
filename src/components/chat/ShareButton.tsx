@@ -2,6 +2,7 @@ import { toJpeg } from 'html-to-image';
 import { Message } from '@/domain/chat/types';
 import { generateShareSummary } from '@/app/actions/chat';
 import { useState } from 'react';
+import { sendGAEvent } from '@next/third-parties/google';
 
 interface ShareButtonProps {
   userMessage: Message;
@@ -12,6 +13,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
   const [isModalOpen, setIsModalOpen] = useState(false);
   //const [isGenerating, setIsGenerating] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [message, setMessage] = useState<string | null>(null);
   //const [downloadComplete, setDownloadComplete] = useState(false);
 
   const generateImage = async () => {
@@ -142,13 +144,15 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
         link.download = `${summary.filename}.jpeg`;
         link.href = imageUrl;
         link.click();
-        // setDownloadComplete(true);
+        setMessage('La conversation a été téléchargée, ouvrez votre dossier de téléchargement.');
       }
     } catch (error) {
-      console.warn('Erreur lors du partage:', error);
-      // setIsModalOpen(false);
-      setPreviewUrl(null);
-    }
+        const message = error instanceof Error ? error.message : 'Unknown error';
+        console.warn('Erreur lors du partage:', message);
+        sendGAEvent('event', 'sharing_failed', {
+            error: message
+        });
+        setMessage('Une erreur est survenue lors du partage : ' + message);    }
   };
 
   return (
@@ -241,13 +245,11 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
               )}
             </div>
 
-            {/*
-            {downloadComplete && (
+            {message && (
               <p className="mt-4 text-zinc-300 text-sm">
-                La conversation a été téléchargée, ouvrez votre dossier de téléchargement.
+                {message}
               </p>
             )}
-          */}
           </div>
         </div>
       )}
