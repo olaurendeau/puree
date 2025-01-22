@@ -2,7 +2,7 @@ import { toPng } from 'html-to-image';
 import { Message } from '@/domain/chat/types';
 import { generateShareSummary } from '@/app/actions/chat';
 import { useState } from 'react';
-import { sendGAEvent } from '@next/third-parties/google'
+//import { sendGAEvent } from '@next/third-parties/google'
 
 interface ShareButtonProps {
   userMessage: Message;
@@ -114,7 +114,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
 
   const handleShare = async () => {
     try {
-      sendGAEvent('event', 'share_button_clicked');
+      //sendGAEvent('event', 'share_button_clicked');
       setIsModalOpen(true);
       setMessage(null);
       
