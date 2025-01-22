@@ -1,4 +1,4 @@
-import { toJpeg } from 'html-to-image';
+import { toPng } from 'html-to-image';
 import { Message } from '@/domain/chat/types';
 import { generateShareSummary } from '@/app/actions/chat';
 import { useState } from 'react';
@@ -95,7 +95,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
       await new Promise(resolve => setTimeout(resolve, 100));
 
       const contentElement = element.firstElementChild as HTMLElement;
-      const dataUrl = await toJpeg(contentElement, {
+      const dataUrl = await toPng(contentElement, {
         quality: 0.95,
         backgroundColor: '#0C0C0C',
         style: {
@@ -126,7 +126,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
       if (navigator.share && /mobile|android|iphone|ipad/i.test(navigator.userAgent)) {
         const response = await fetch(imageUrl);
         const blob = await response.blob();
-        const file = new File([blob], `${summary.filename}.jpeg`, { type: 'image/jpeg' });
+        const file = new File([blob], `${summary.filename}.png`, { type: 'image/png' });
 
         await navigator.share({
           files: [file],
@@ -135,7 +135,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
         });
       } else {
         const link = document.createElement('a');
-        link.download = `${summary.filename}.jpeg`;
+        link.download = `${summary.filename}.png`;
         link.href = imageUrl;
         link.click();
         setMessage('La conversation a été téléchargée, ouvrez votre dossier de téléchargement.');
