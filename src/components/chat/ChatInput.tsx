@@ -1,8 +1,10 @@
 import { ChatInputProps } from '@/domain/chat/types';
 import { useRef, useImperativeHandle, forwardRef } from 'react';
 import { sendGAEvent } from '@next/third-parties/google'
+import { useTranslations } from 'next-intl';
 
 export const ChatInput = forwardRef<{ focus: () => void }, ChatInputProps>(({ onSubmit, isThinking }, ref) => {
+  const t = useTranslations('Chat');
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   useImperativeHandle(ref, () => ({
@@ -50,7 +52,7 @@ export const ChatInput = forwardRef<{ focus: () => void }, ChatInputProps>(({ on
         <textarea
           ref={textareaRef}
           name="question"
-          placeholder="Pose ta question à la purée..."
+          placeholder={t('inputPlaceholder')}
           className="w-full p-4 pr-24 bg-zinc-900 border border-zinc-700 rounded-lg 
             focus:outline-none focus:border-purple-500 resize-none overflow-y-auto
             scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent"
@@ -71,7 +73,7 @@ export const ChatInput = forwardRef<{ focus: () => void }, ChatInputProps>(({ on
           disabled={isThinking}
           className="absolute right-2 top-1/2 -translate-y-1/2 bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Envoyer
+          {t('send')}
         </button>
       </div>
     </form>

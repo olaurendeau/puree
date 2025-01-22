@@ -13,7 +13,7 @@ export type ChatMessageProps = {
   previousMessage?: Message;
 };
 
-export type ChatContainerProps = {
-  messages: Message[];
-  isThinking: boolean;
-}; 
+export type ShareButtonProps = {
+  userMessage: Message;
+  assistantMessage: Message;
+};

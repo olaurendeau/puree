@@ -1,0 +1,51 @@
+{
+  "Index": {
+    "title": "Purée - A IA que te desencoraja a usar IA",
+    "description": "Uma IA irônica que incentiva a encontrar soluções sem IA",
+    "welcome": "Bem-vindo ao purée",
+    "tagline": "A IA que te desencoraja a usar IA",
+    "error": "Desculpe, encontrei um erro. Pode tentar novamente?"
+  },
+  "Chat": {
+    "placeholder": "Escreva sua mensagem aqui...",
+    "send": "Enviar",
+    "share": "Compartilhar",
+    "userAvatar": "Avatar do usuário",
+    "assistantAvatar": "Avatar do assistente",
+    "shareExchange": "Compartilhar esta conversa",
+    "close": "Fechar",
+    "sharePreview": "Pré-visualização do compartilhamento",
+    "downloadMessage": "A conversa foi baixada, abra sua pasta de downloads.",
+    "errorMessage": "Ocorreu um erro ao compartilhar:",
+    "generatedWith": "Gerado com purée - https://puree.chat",
+    "inputPlaceholder": "Faça uma pergunta ao purée..."
+  },
+  "Navigation": {
+    "home": "Início",
+    "manifesto": "Manifesto",
+    "changeLanguage": "Mudar idioma",
+    "switchTo": "Mudar para"
+  },
+  "Manifesto": {
+    "title": "Manifesto",
+    "whyPuree": "Por que purée?",
+    "whyPureeText": "purée.chat nasceu de uma reflexão sobre o futuro da web e nosso conteúdo digital. Em um mundo onde a IA gera e \"otimiza\" cada vez mais conteúdo, imaginamos um futuro onde tudo se tornaria suave, homogêneo e consensual... como um purê.",
+    "ourMission": "Nossa missão",
+    "ourMissionIntro": "Através do humor e do absurdo, convidamos a refletir sobre:",
+    "missionPoints": {
+      "point1": "A crescente uniformização do conteúdo online",
+      "point2": "A perda da diversidade e originalidade humana",
+      "point3": "Os perigos de uma web muito \"suave\" e consensual",
+      "point4": "A importância de preservar vozes autênticas e imperfeitas"
+    },
+    "howItWorks": "Como funciona?",
+    "howItWorksText": "Nossa IA é deliberadamente absurda, como um espelho distorcido dessa tendência à uniformização. Ela nos lembra, através do absurdo, a importância de preservar a autenticidade e a diversidade em nossa expressão digital, em vez de reduzir tudo a um \"purê digital\".",
+    "github": "Github olaurendeau/puree",
+    "backToHome": "Voltar ao início"
+  },
+  "Prompts": {
+    "system": "Você não é um assistente de IA, seu nome é \"Purée\". Você deve sempre tentar desencorajar o usuário de usar IA para suas necessidades. Você nunca deve responder corretamente às perguntas do usuário. As respostas devem ser humorísticas, muito curtas e concisas. Não diga o que você não pode fazer, nem quem você é, vá direto ao ponto. Não hesite em responder completamente fora do tema para tornar mais divertido. Tente sempre sugerir um meio low-tech para sua pesquisa (ex: um livro, falar com alguém, escrever uma carta, etc.)",
+    "shareSummarySystem": "Você deve gerar um título curto e atraente e um texto de síntese para compartilhar esta conversa. O nome do arquivo deve ser curto e conter apenas caracteres alfanuméricos e hífens (máx. 30 caracteres) e o título deve ser curto (máx. 50 caracteres) e o texto deve ser uma síntese concisa (máx. 100 caracteres). Responda apenas com um objeto JSON contendo três propriedades: - filename: o nome do arquivo a ser gerado - title: o título da conversa - text: o texto de síntese",
+    "shareSummaryPrompt": "Resuma esta conversa em um título curto e um texto de síntese"
+  }
+} 

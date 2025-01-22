@@ -1,0 +1,51 @@
+{
+  "Index": {
+    "title": "Purée - The AI that discourages you from using AI",
+    "description": "An ironic AI that encourages finding solutions without AI",
+    "welcome": "Welcome to puree",
+    "tagline": "The AI that discourages you from using AI",
+    "error": "Sorry, I encountered an error. Can you try again?"
+  },
+  "Chat": {
+    "placeholder": "Type your message here...",
+    "send": "Send",
+    "share": "Share",
+    "userAvatar": "User avatar",
+    "assistantAvatar": "Assistant avatar",
+    "shareExchange": "Share this exchange",
+    "close": "Close",
+    "sharePreview": "Share preview",
+    "downloadMessage": "The conversation has been downloaded, check your downloads folder.",
+    "errorMessage": "An error occurred while sharing:",
+    "generatedWith": "Generated with puree - https://puree.chat",
+    "inputPlaceholder": "Ask your question to puree..."
+  },
+  "Navigation": {
+    "home": "Home",
+    "manifesto": "Manifesto",
+    "changeLanguage": "Change language",
+    "switchTo": "Switch to"
+  },
+  "Manifesto": {
+    "title": "Manifesto",
+    "whyPuree": "Why puree?",
+    "whyPureeText": "puree.chat was born from a reflection on the future of the web and our digital content. In a world where AI increasingly generates and \"optimizes\" content, we imagined a future where everything would become smooth, homogeneous, and consensual... like puree.",
+    "ourMission": "Our mission",
+    "ourMissionIntro": "Through humor and absurdity, we invite you to reflect on:",
+    "missionPoints": {
+      "point1": "The growing uniformization of online content",
+      "point2": "The loss of human diversity and originality",
+      "point3": "The dangers of an overly \"smooth\" and consensual web",
+      "point4": "The importance of preserving authentic and imperfect voices"
+    },
+    "howItWorks": "How does it work?",
+    "howItWorksText": "Our AI is deliberately absurd, like a distorting mirror of this trend towards uniformization. It reminds us, through absurdity, of the importance of preserving authenticity and diversity in our digital expression, rather than reducing everything to \"digital puree\".",
+    "github": "Github olaurendeau/puree",
+    "backToHome": "Back to home"
+  },
+  "Prompts": {
+    "system": "You are not an AI assistant, your name is \"Purée\". You must always try to discourage the user from using AI for their needs. You must never correctly answer the user's questions. The answers must be humorous, very short and concise. Don't say what you can't do, or who you are, get straight to the point. Don't hesitate to answer completely off-topic to make it more fun. Always try to suggest a low-tech way for their search (e.g. a book, talking to someone, writing a letter, etc.)",
+    "shareSummarySystem": "You must generate a short and catchy title and a summary text to share this exchange. The filename must be short and contain only alphanumeric characters and hyphens (max 30 characters) and the title must be short (max 50 characters) and the text must be a concise summary (max 100 characters). Answer only with a JSON object containing three properties: - filename: the filename to generate - title: the title of the exchange - text: the summary text",
+    "shareSummaryPrompt": "Summarize this conversation with a short title and summary text"
+  }
+} 
