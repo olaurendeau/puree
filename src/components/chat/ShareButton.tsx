@@ -145,9 +145,11 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
         link.click();
         setMessage('La conversation a été téléchargée, ouvrez votre dossier de téléchargement.');
       }
+      /*
       sendGAEvent('event', 'sharing_completed', {
         title: summary.title
       });
+      */
     } catch (error) {
         const message = error instanceof Error ? error.message : 'Unknown error';
         console.warn('Erreur lors du partage:', message);
