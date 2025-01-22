@@ -136,8 +136,6 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
           title: summary.title,
           text: summary.text,
         });
-        setIsModalOpen(false);
-        setPreviewUrl(null);
       } else {
         const link = document.createElement('a');
         link.download = `${summary.filename}.png`;
