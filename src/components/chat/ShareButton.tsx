@@ -2,7 +2,6 @@ import { toJpeg } from 'html-to-image';
 import { Message } from '@/domain/chat/types';
 import { generateShareSummary } from '@/app/actions/chat';
 import { useState } from 'react';
-//import { sendGAEvent } from '@next/third-parties/google'
 
 interface ShareButtonProps {
   userMessage: Message;
@@ -11,8 +10,9 @@ interface ShareButtonProps {
 
 export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  //const [isGenerating, setIsGenerating] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
-  //const [message, setMessage] = useState<string | null>(null);
+  //const [downloadComplete, setDownloadComplete] = useState(false);
 
   const generateImage = async () => {
     const element = document.createElement('div');
@@ -114,12 +114,13 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
 
   const handleShare = async () => {
     try {
-      //sendGAEvent('event', 'share_button_clicked');
-      setIsModalOpen(true);
-      //setMessage(null);
+       setIsModalOpen(true);
+    //   setIsGenerating(true);
+    //   setDownloadComplete(false);
       
       const imageUrl = await generateImage();
       setPreviewUrl(imageUrl);
+    //   setIsGenerating(false);
       
       const summary = await generateShareSummary([userMessage, assistantMessage]);
 
@@ -133,25 +134,20 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
           title: summary.title,
           text: summary.text,
         });
+
+        // setIsModalOpen(false);
+        setPreviewUrl(null);
       } else {
         const link = document.createElement('a');
         link.download = `${summary.filename}.jpeg`;
         link.href = imageUrl;
         link.click();
-        //setMessage('La conversation a été téléchargée, ouvrez votre dossier de téléchargement.');
+        // setDownloadComplete(true);
       }
-      /*
-      sendGAEvent('event', 'sharing_completed', {
-        title: summary.title
-      });
-      */
     } catch (error) {
-        const message = error instanceof Error ? error.message : 'Unknown error';
-        console.warn('Erreur lors du partage:', message);
-        //sendGAEvent('event', 'sharing_failed', {
-        //    error: message
-        //});
-        //setMessage('Une erreur est survenue lors du partage : ' + message);
+      console.warn('Erreur lors du partage:', error);
+      // setIsModalOpen(false);
+      setPreviewUrl(null);
     }
   };
 
@@ -165,7 +161,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
         tabIndex={0}
         title="Partager cet échange"
       >
-        {/iphone|ipad/i.test(navigator.userAgent) ? (
+        {/ios/.test(navigator.userAgent) ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
@@ -224,27 +220,34 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
             </button>
-            
-            <h2 className="text-xl font-semibold text-zinc-100 mb-4">
-              Prévisualisation du partage
-            </h2>
-            
-            <div className="relative aspect-[4/3] bg-black/50 rounded-lg overflow-hidden">
-            {previewUrl && (
-                <img
-                src={previewUrl}
-                alt="Prévisualisation du partage"
-                className="w-full h-full object-contain"
-                />
-            )}
-            </div>
             {/*
-            {message && (
+            <h2 className="text-xl font-semibold text-zinc-100 mb-4">
+              {downloadComplete ? 'Téléchargement terminé' : 'Prévisualisation du partage'}
+            </h2>
+            */}
+            <div className="relative aspect-[4/3] bg-black/50 rounded-lg overflow-hidden">
+              {/*isGenerating ? (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-8 h-8 border-4 border-purple-500/30 border-t-purple-500 rounded-full animate-spin" />
+                </div>
+              ) : */(
+                previewUrl && (
+                  <img
+                    src={previewUrl}
+                    alt="Prévisualisation du partage"
+                    className="w-full h-full object-contain"
+                  />
+                )
+              )}
+            </div>
+
+            {/*
+            {downloadComplete && (
               <p className="mt-4 text-zinc-300 text-sm">
-                {message}
+                La conversation a été téléchargée, ouvrez votre dossier de téléchargement.
               </p>
             )}
-            */}
+          */}
           </div>
         </div>
       )}
