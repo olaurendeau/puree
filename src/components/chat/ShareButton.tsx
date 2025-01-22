@@ -222,26 +222,24 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
             </button>
-            <div>
-                <h2 className="text-xl font-semibold text-zinc-100 mb-4">
-                Previsualisation du partage
-                </h2>
-                <div className="relative aspect-[4/3] bg-black/50 rounded-lg overflow-hidden">
-                    { previewUrl && (
-                    <img
-                        src={previewUrl}
-                        alt="Prévisualisation du partage"
-                        className="w-full h-full object-contain"
-                    />
-                    )}
-                </div>
-
-                {message && (
-                <p className="mt-4 text-zinc-300 text-sm">
-                    {message}
-                </p>
+            <p className="text-xl font-semibold text-zinc-100 mb-4">
+              Prévisualisation du partage
+            </p>
+            <div className="relative aspect-[4/3] bg-black/50 rounded-lg overflow-hidden">
+                { previewUrl && (
+                  <img
+                    src={previewUrl}
+                    alt="Prévisualisation du partage"
+                    className="w-full h-full object-contain"
+                  />
                 )}
             </div>
+
+            {message && (
+              <p className="mt-4 text-zinc-300 text-sm">
+                {message}
+              </p>
+            )}
           </div>
         </div>
       )}
