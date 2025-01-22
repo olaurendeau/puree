@@ -12,7 +12,7 @@ interface ShareButtonProps {
 export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
-  const [message, setMessage] = useState<string | null>(null);
+  //const [message, setMessage] = useState<string | null>(null);
 
   const generateImage = async () => {
     const element = document.createElement('div');
@@ -116,7 +116,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
     try {
       //sendGAEvent('event', 'share_button_clicked');
       setIsModalOpen(true);
-      setMessage(null);
+      //setMessage(null);
       
       const imageUrl = await generateImage();
       setPreviewUrl(imageUrl);
@@ -138,7 +138,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
         link.download = `${summary.filename}.jpeg`;
         link.href = imageUrl;
         link.click();
-        setMessage('La conversation a été téléchargée, ouvrez votre dossier de téléchargement.');
+        //setMessage('La conversation a été téléchargée, ouvrez votre dossier de téléchargement.');
       }
       /*
       sendGAEvent('event', 'sharing_completed', {
@@ -151,7 +151,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
         //sendGAEvent('event', 'sharing_failed', {
         //    error: message
         //});
-        setMessage('Une erreur est survenue lors du partage : ' + message);
+        //setMessage('Une erreur est survenue lors du partage : ' + message);
     }
   };
 
@@ -238,12 +238,13 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
                 />
             )}
             </div>
-
+            {/*
             {message && (
               <p className="mt-4 text-zinc-300 text-sm">
                 {message}
               </p>
             )}
+            */}
           </div>
         </div>
       )}
