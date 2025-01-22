@@ -11,10 +11,8 @@ interface ShareButtonProps {
 
 export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  //const [isGenerating, setIsGenerating] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
-  //const [downloadComplete, setDownloadComplete] = useState(false);
 
   const generateImage = async () => {
     const element = document.createElement('div');
@@ -224,25 +222,17 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
             </button>
-            {/*
             <h2 className="text-xl font-semibold text-zinc-100 mb-4">
-              {downloadComplete ? 'Téléchargement terminé' : 'Prévisualisation du partage'}
+              Prévisualisation du partage
             </h2>
-            */}
             <div className="relative aspect-[4/3] bg-black/50 rounded-lg overflow-hidden">
-              {/*isGenerating ? (
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-8 h-8 border-4 border-purple-500/30 border-t-purple-500 rounded-full animate-spin" />
-                </div>
-              ) : */(
-                previewUrl && (
+                { previewUrl && (
                   <img
                     src={previewUrl}
                     alt="Prévisualisation du partage"
                     className="w-full h-full object-contain"
                   />
-                )
-              )}
+                )}
             </div>
 
             {message && (
