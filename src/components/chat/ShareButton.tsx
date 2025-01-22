@@ -222,8 +222,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
             </button>
-            <p>U</p>
-            <div className="relative aspect-[4/3] bg-black/50 rounded-lg overflow-hidden">
+            <div className="relative aspect-[4/3] bg-black/50 rounded-lg overflow-hidden mt-6">
                 { previewUrl && (
                   <img
                     src={previewUrl}
