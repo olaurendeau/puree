@@ -9,11 +9,7 @@ import { ThinkingIndicator } from '@/components/chat/ThinkingIndicator';
 import { useChatScroll } from '@/hooks/chat/useChatScroll';
 import { messageService } from '@/services/chat/messageService';
 
-interface ChatProps {
-  locale: string;
-}
-
-export const Chat = ({ locale }: ChatProps) => {
+export const Chat = () => {
   const t = useTranslations('Index');
   const [messages, setMessages] = useState<Message[]>([]);
   const [isThinking, setIsThinking] = useState(false);
@@ -36,7 +32,7 @@ export const Chat = ({ locale }: ChatProps) => {
       setMessages(newMessages);
       setIsThinking(true);
       
-      const response = await messageService.generateResponse(newMessages, locale);
+      const response = await messageService.generateResponse(newMessages);
       
       setMessages([...newMessages, { 
         role: 'assistant', 
@@ -62,7 +58,7 @@ export const Chat = ({ locale }: ChatProps) => {
             <p className="text-zinc-400">{t('tagline')}</p>
           </div>
           <div className="w-full max-w-3xl">
-            <ChatInput ref={chatInputRef} onSubmit={handleSubmit} isThinking={isThinking} locale={locale} />
+            <ChatInput ref={chatInputRef} onSubmit={handleSubmit} isThinking={isThinking} />
           </div>
         </section>
       ) : (
@@ -77,7 +73,6 @@ export const Chat = ({ locale }: ChatProps) => {
                   key={`${message.role}-${index}-${message.content.substring(0, 10)}`}
                   message={message}
                   previousMessage={index > 0 ? messages[index - 1] : undefined}
-                  locale={locale}
                 />
               ))}
               

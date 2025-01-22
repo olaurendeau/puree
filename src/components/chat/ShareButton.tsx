@@ -1,12 +1,11 @@
 import { toJpeg } from 'html-to-image';
-import { Message } from '@/domain/chat/types';
 import { generateShareSummary } from '@/app/actions/chat';
 import { useState } from 'react';
 import { sendGAEvent } from '@next/third-parties/google';
 import { useTranslations } from 'next-intl';
 import { ShareButtonProps } from '@/domain/chat/types';
 
-export const ShareButton = ({ userMessage, assistantMessage, locale }: ShareButtonProps) => {
+export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps) => {
   const t = useTranslations('Chat');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
@@ -119,7 +118,7 @@ export const ShareButton = ({ userMessage, assistantMessage, locale }: ShareButt
       const imageUrl = await generateImage();
       setPreviewUrl(imageUrl);
       
-      const summary = await generateShareSummary([userMessage, assistantMessage], locale);
+      const summary = await generateShareSummary([userMessage, assistantMessage]);
 
       if (navigator.share && /mobile|android|iphone|ipad/i.test(navigator.userAgent)) {
         const response = await fetch(imageUrl);

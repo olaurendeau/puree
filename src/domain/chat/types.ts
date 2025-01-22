@@ -11,11 +11,9 @@ export type ChatInputProps = {
 export type ChatMessageProps = {
   message: Message;
   previousMessage?: Message;
-  locale: string;
 };
 
 export type ShareButtonProps = {
   userMessage: Message;
   assistantMessage: Message;
-  locale: string;
 };

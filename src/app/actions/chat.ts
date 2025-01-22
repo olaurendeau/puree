@@ -8,7 +8,7 @@ const anthropic = new Anthropic({
   apiKey: process.env.CLAUDE_API_KEY,
 });
 
-export async function generateAIResponse(messages: Message[], locale: string): Promise<string> {
+export async function generateAIResponse(messages: Message[]): Promise<string> {
     try {
         if (!process.env.CLAUDE_API_KEY) throw new Error('Claude API key is not configured');
 
@@ -39,7 +39,7 @@ interface ShareSummary {
     text: string;
 }
 
-export async function generateShareSummary(messages: Message[], locale: string): Promise<ShareSummary> {
+export async function generateShareSummary(messages: Message[]): Promise<ShareSummary> {
     const t = await getTranslations('Prompts');
 
     const msgs: Message[] = [

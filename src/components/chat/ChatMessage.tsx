@@ -2,7 +2,7 @@ import { ChatMessageProps } from '@/domain/chat/types';
 import { ShareButton } from './ShareButton';
 import { useTranslations } from 'next-intl';
 
-export const ChatMessage = ({ message, previousMessage, locale }: ChatMessageProps) => {
+export const ChatMessage = ({ message, previousMessage }: ChatMessageProps) => {
   const t = useTranslations('Chat');
   const showShareButton = message.role === 'assistant' && previousMessage?.role === 'user';
 
@@ -26,7 +26,6 @@ export const ChatMessage = ({ message, previousMessage, locale }: ChatMessagePro
           <ShareButton
             userMessage={previousMessage}
             assistantMessage={message}
-            locale={locale}
           />
         </div>
       )}
