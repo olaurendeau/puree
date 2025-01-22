@@ -1,4 +1,4 @@
-import { toJpeg } from 'html-to-image';
+import { toPng } from 'html-to-image';
 import { Message } from '@/domain/chat/types';
 import { generateShareSummary } from '@/app/actions/chat';
 import { useState } from 'react';
@@ -13,7 +13,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
-  const [downloadComplete, setDownloadComplete] = useState(false);
+  const [message, setMessage] = useState<string | null>(null);
 
   const generateImage = async () => {
     const element = document.createElement('div');
@@ -96,7 +96,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
       await new Promise(resolve => setTimeout(resolve, 100));
 
       const contentElement = element.firstElementChild as HTMLElement;
-      const dataUrl = await toJpeg(contentElement, {
+      const dataUrl = await toPng(contentElement, {
         quality: 0.95,
         backgroundColor: '#0C0C0C',
         style: {
@@ -118,7 +118,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
       sendGAEvent('event', 'share_button_clicked');
       setIsModalOpen(true);
       setIsGenerating(true);
-      setDownloadComplete(false);
+      setMessage(null);
       
       const imageUrl = await generateImage();
       setPreviewUrl(imageUrl);
@@ -129,7 +129,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
       if (navigator.share && /mobile|android|iphone|ipad/i.test(navigator.userAgent)) {
         const response = await fetch(imageUrl);
         const blob = await response.blob();
-        const file = new File([blob], `${summary.filename}.jpeg`, { type: 'image/jpeg' });
+        const file = new File([blob], `${summary.filename}.png`, { type: 'image/png' });
 
         await navigator.share({
           files: [file],
@@ -140,18 +140,21 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
         setPreviewUrl(null);
       } else {
         const link = document.createElement('a');
-        link.download = `${summary.filename}.jpeg`;
+        link.download = `${summary.filename}.png`;
         link.href = imageUrl;
         link.click();
-        setDownloadComplete(true);
+        setMessage('La conversation a été téléchargée, ouvrez votre dossier de téléchargement.');
       }
       sendGAEvent('event', 'sharing_completed', {
         title: summary.title
       });
     } catch (error) {
-      console.warn('Erreur lors du partage:', error);
-      setIsModalOpen(false);
-      setPreviewUrl(null);
+        const message = error instanceof Error ? error.message : 'Unknown error';
+        console.warn('Erreur lors du partage:', message);
+        sendGAEvent('event', 'sharing_failed', {
+            error: message
+        });
+        setMessage('Une erreur est survenue lors du partage : ' + message);
     }
   };
 
@@ -226,7 +229,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
             </button>
             
             <h2 className="text-xl font-semibold text-zinc-100 mb-4">
-              {downloadComplete ? 'Téléchargement terminé' : 'Prévisualisation du partage'}
+              Prévisualisation du partage
             </h2>
             
             <div className="relative aspect-[4/3] bg-black/50 rounded-lg overflow-hidden">
@@ -245,9 +248,9 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
               )}
             </div>
 
-            {downloadComplete && (
+            {message && (
               <p className="mt-4 text-zinc-300 text-sm">
-                La conversation a été téléchargée, ouvrez votre dossier de téléchargement.
+                {message}
               </p>
             )}
           </div>
