@@ -116,7 +116,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
     try {
       sendGAEvent('event', 'share_button_clicked');
       setIsModalOpen(true);
-      setMessage("Partage en cours...");
+      setMessage(null);
       
       const imageUrl = await generateImage();
       setPreviewUrl(imageUrl);
