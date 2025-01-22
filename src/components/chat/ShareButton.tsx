@@ -139,24 +139,46 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
   return (
     <button
       onClick={handleShare}
-      className="text-purple-500 hover:text-purple-300 transition-colors"
+      className="inline-flex items-center justify-center p-2 rounded-lg bg-purple-500 text-zinc-100 hover:bg-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all"
       aria-label="Partager cet échange"
+      role="button"
+      tabIndex={0}
+      title="Partager cet échange"
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
-        <polyline points="16 6 12 2 8 6" />
-        <line x1="12" y1="2" x2="12" y2="15" />
-      </svg>
+      {/ios/.test(navigator.userAgent) ? (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
+          <polyline points="16 6 12 2 8 6" />
+          <line x1="12" y1="2" x2="12" y2="15" />
+        </svg>
+      ) : (
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          viewBox="0 0 24 24"
+          width="20"
+          height="20"
+          stroke="currentColor"
+          fill="none"
+          aria-hidden="true"
+        >
+          <circle cx="17" cy="5" r="3" strokeWidth="2"/>
+          <circle cx="7" cy="14" r="3" strokeWidth="2"/>
+          <circle cx="17" cy="19" r="3" strokeWidth="2"/>
+          <line x1="14.5" y1="6.5" x2="9.5" y2="12.5" strokeWidth="2"/>
+          <line x1="14.5" y1="17.5" x2="9.5" y2="15.5" strokeWidth="2"/>
+        </svg>
+      )}
     </button>
   );
 }; 
