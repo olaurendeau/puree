@@ -2,14 +2,12 @@ import { toJpeg } from 'html-to-image';
 import { Message } from '@/domain/chat/types';
 import { generateShareSummary } from '@/app/actions/chat';
 import { useState } from 'react';
-import { sendGAEvent } from '@next/third-parties/google'
+import { sendGAEvent } from '@next/third-parties/google';
+import { useTranslations } from 'next-intl';
+import { ShareButtonProps } from '@/domain/chat/types';
 
-interface ShareButtonProps {
-  userMessage: Message;
-  assistantMessage: Message;
-}
-
-export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps) => {
+export const ShareButton = ({ userMessage, assistantMessage, locale }: ShareButtonProps) => {
+  const t = useTranslations('Chat');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
@@ -84,7 +82,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
           font-size: 14px;
           color: #71717a;
         ">
-          Généré avec purée - https://puree.chat
+          ${t('generatedWith')}
         </div>
       </div>
     `;
@@ -121,7 +119,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
       const imageUrl = await generateImage();
       setPreviewUrl(imageUrl);
       
-      const summary = await generateShareSummary([userMessage, assistantMessage]);
+      const summary = await generateShareSummary([userMessage, assistantMessage], locale);
 
       if (navigator.share && /mobile|android|iphone|ipad/i.test(navigator.userAgent)) {
         const response = await fetch(imageUrl);
@@ -138,7 +136,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
         link.download = `${summary.filename}.jpeg`;
         link.href = imageUrl;
         link.click();
-        setMessage('La conversation a été téléchargée, ouvrez votre dossier de téléchargement.');
+        setMessage(t('downloadMessage'));
       }
       sendGAEvent('event', 'sharing_completed', {
         title: summary.title
@@ -149,7 +147,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
         sendGAEvent('event', 'sharing_failed', {
             error: message
         });
-        setMessage('Une erreur est survenue lors du partage : ' + message);
+        setMessage(`${t('errorMessage')} ${message}`);
     }
   };
 
@@ -158,10 +156,10 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
       <button
         onClick={handleShare}
         className="inline-flex items-center justify-center p-2 rounded-lg bg-purple-500 text-zinc-100 hover:bg-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all"
-        aria-label="Partager cet échange"
+        aria-label={t('shareExchange')}
         role="button"
         tabIndex={0}
-        title="Partager cet échange"
+        title={t('shareExchange')}
       >
         {/iphone|ipad/i.test(navigator.userAgent) ? (
           <svg
@@ -205,7 +203,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
             <button
               onClick={() => setIsModalOpen(false)}
               className="absolute top-4 right-4 text-zinc-400 hover:text-zinc-100"
-              aria-label="Fermer"
+              aria-label={t('close')}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -224,13 +222,13 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
             </button>
             
             <div className="relative aspect-[4/3] bg-black/50 rounded-lg overflow-hidden mt-6">
-            {previewUrl && (
+              {previewUrl && (
                 <img
-                src={previewUrl}
-                    alt="Prévisualisation du partage"
-                className="w-full h-full object-contain"
+                  src={previewUrl}
+                  alt={t('sharePreview')}
+                  className="w-full h-full object-contain"
                 />
-            )}
+              )}
             </div>
             
             {message && (

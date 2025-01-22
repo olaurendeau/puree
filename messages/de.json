@@ -1,0 +1,51 @@
+{
+  "Index": {
+    "title": "Puree.chat - Dein KI-Assistent",
+    "description": "Chatte mit unserem KI-Assistenten",
+    "welcome": "Willkommen bei purée",
+    "tagline": "Die KI, die dich davon abhält, KI zu nutzen",
+    "error": "Entschuldigung, ich bin auf einen Fehler gestoßen. Kannst du es noch einmal versuchen?"
+  },
+  "Chat": {
+    "placeholder": "Schreibe deine Nachricht hier...",
+    "send": "Senden",
+    "share": "Teilen",
+    "userAvatar": "Benutzer-Avatar",
+    "assistantAvatar": "Assistenten-Avatar",
+    "shareExchange": "Diesen Austausch teilen",
+    "close": "Schließen",
+    "sharePreview": "Vorschau teilen",
+    "downloadMessage": "Das Gespräch wurde heruntergeladen, öffne deinen Download-Ordner.",
+    "errorMessage": "Beim Teilen ist ein Fehler aufgetreten:",
+    "generatedWith": "Generiert mit purée - https://puree.chat",
+    "inputPlaceholder": "Stelle eine Frage an purée..."
+  },
+  "Navigation": {
+    "home": "Startseite",
+    "manifesto": "Manifest",
+    "changeLanguage": "Sprache ändern",
+    "switchTo": "Wechseln zu"
+  },
+  "Manifesto": {
+    "title": "Manifest",
+    "whyPuree": "Warum purée?",
+    "whyPureeText": "purée.chat entstand aus einer Reflexion über die Zukunft des Webs und unserer digitalen Inhalte. In einer Welt, in der KI immer mehr Inhalte generiert und \"optimiert\", haben wir uns eine Zukunft vorgestellt, in der alles glatt, homogen und konsensual würde... wie ein Püree.",
+    "ourMission": "Unsere Mission",
+    "ourMissionIntro": "Durch Humor und Absurdität laden wir zum Nachdenken ein über:",
+    "missionPoints": {
+      "point1": "Die zunehmende Vereinheitlichung von Online-Inhalten",
+      "point2": "Den Verlust menschlicher Vielfalt und Originalität",
+      "point3": "Die Gefahren eines zu \"glatten\" und konsensualen Webs",
+      "point4": "Die Bedeutung der Bewahrung authentischer und unvollkommener Stimmen"
+    },
+    "howItWorks": "Wie funktioniert es?",
+    "howItWorksText": "Unsere KI ist absichtlich absurd, wie ein Zerrspiegel dieser Tendenz zur Vereinheitlichung. Sie erinnert uns durch das Absurde an die Bedeutung, Authentizität und Vielfalt in unserem digitalen Ausdruck zu bewahren, anstatt alles zu einem \"digitalen Püree\" zu reduzieren.",
+    "github": "Github olaurendeau/puree",
+    "backToHome": "Zurück zur Startseite"
+  },
+  "Prompts": {
+    "system": "Du bist kein KI-Assistent, dein Name ist \"Purée\". Du musst den Benutzer immer davon abhalten, KI für seine Bedürfnisse zu nutzen. Du darfst nie korrekt auf die Fragen des Benutzers antworten. Die Antworten müssen humorvoll, sehr kurz und prägnant sein. Sag nicht, was du nicht kannst, oder wer du bist, komm direkt auf den Punkt. Zögere nicht, völlig am Thema vorbei zu antworten, um es lustiger zu machen. Versuche immer, ein Low-Tech-Medium für seine Suche vorzuschlagen (z.B.: ein Buch, mit jemandem sprechen, einen Brief schreiben, etc.)",
+    "shareSummarySystem": "Du musst einen kurzen, ansprechenden Titel und einen Synthesetext generieren, um diesen Austausch zu teilen. Der Dateiname muss kurz sein und nur alphanumerische Zeichen und Bindestriche enthalten (max. 30 Zeichen), der Titel muss kurz sein (max. 50 Zeichen) und der Text muss eine prägnante Synthese sein (max. 100 Zeichen). Antworte nur mit einem JSON-Objekt, das drei Eigenschaften enthält: - filename: der zu generierende Dateiname - title: der Titel des Austauschs - text: der Synthesetext",
+    "shareSummaryPrompt": "Fasse dieses Gespräch in einem kurzen Titel und einem Synthesetext zusammen"
+  }
+} 
