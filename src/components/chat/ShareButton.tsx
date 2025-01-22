@@ -1,4 +1,4 @@
-import { toPng } from 'html-to-image';
+import { toJpeg } from 'html-to-image';
 import { Message } from '@/domain/chat/types';
 import { generateShareSummary } from '@/app/actions/chat';
 import { useState } from 'react';
@@ -11,7 +11,6 @@ interface ShareButtonProps {
 
 export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isGenerating, setIsGenerating] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
 
@@ -96,7 +95,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
       await new Promise(resolve => setTimeout(resolve, 100));
 
       const contentElement = element.firstElementChild as HTMLElement;
-      const dataUrl = await toPng(contentElement, {
+      const dataUrl = await toJpeg(contentElement, {
         quality: 0.95,
         backgroundColor: '#0C0C0C',
         style: {
@@ -117,19 +116,17 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
     try {
       sendGAEvent('event', 'share_button_clicked');
       setIsModalOpen(true);
-      setIsGenerating(true);
       setMessage(null);
       
       const imageUrl = await generateImage();
       setPreviewUrl(imageUrl);
-      setIsGenerating(false);
       
       const summary = await generateShareSummary([userMessage, assistantMessage]);
 
       if (navigator.share && /mobile|android|iphone|ipad/i.test(navigator.userAgent)) {
         const response = await fetch(imageUrl);
         const blob = await response.blob();
-        const file = new File([blob], `${summary.filename}.png`, { type: 'image/png' });
+        const file = new File([blob], `${summary.filename}.jpeg`, { type: 'image/jpeg' });
 
         await navigator.share({
           files: [file],
@@ -138,7 +135,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
         });
       } else {
         const link = document.createElement('a');
-        link.download = `${summary.filename}.png`;
+        link.download = `${summary.filename}.jpeg`;
         link.href = imageUrl;
         link.click();
         setMessage('La conversation a été téléchargée, ouvrez votre dossier de téléchargement.');
@@ -226,26 +223,16 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
               </svg>
             </button>
             
-            <h2 className="text-xl font-semibold text-zinc-100 mb-4">
-              Prévisualisation du partage
-            </h2>
-            
-            <div className="relative aspect-[4/3] bg-black/50 rounded-lg overflow-hidden">
-              {isGenerating ? (
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-8 h-8 border-4 border-purple-500/30 border-t-purple-500 rounded-full animate-spin" />
-                </div>
-              ) : (
-                previewUrl && (
-                  <img
-                    src={previewUrl}
+            <div className="relative aspect-[4/3] bg-black/50 rounded-lg overflow-hidden mt-6">
+            {previewUrl && (
+                <img
+                src={previewUrl}
                     alt="Prévisualisation du partage"
-                    className="w-full h-full object-contain"
-                  />
-                )
-              )}
+                className="w-full h-full object-contain"
+                />
+            )}
             </div>
-
+            
             {message && (
               <p className="mt-4 text-zinc-300 text-sm">
                 {message}
