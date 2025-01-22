@@ -1,5 +1,6 @@
 import { ChatInputProps } from '@/domain/chat/types';
 import { useRef, useImperativeHandle, forwardRef } from 'react';
+import { sendGAEvent } from '@next/third-parties/google'
 
 export const ChatInput = forwardRef<{ focus: () => void }, ChatInputProps>(({ onSubmit, isThinking }, ref) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -29,6 +30,8 @@ export const ChatInput = forwardRef<{ focus: () => void }, ChatInputProps>(({ on
   };
 
   const handleSubmit = (e: React.FormEvent) => {
+    sendGAEvent('event', 'chat_input_submitted');
+
     e.preventDefault();
     
     if (!textareaRef.current) return;

@@ -2,6 +2,7 @@ import { toJpeg } from 'html-to-image';
 import { Message } from '@/domain/chat/types';
 import { generateShareSummary } from '@/app/actions/chat';
 import { useState } from 'react';
+import { sendGAEvent } from '@next/third-parties/google'
 
 interface ShareButtonProps {
   userMessage: Message;
@@ -114,6 +115,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
 
   const handleShare = async () => {
     try {
+      sendGAEvent('event', 'share_button_clicked');
       setIsModalOpen(true);
       setIsGenerating(true);
       setDownloadComplete(false);
@@ -143,6 +145,9 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
         link.click();
         setDownloadComplete(true);
       }
+      sendGAEvent('event', 'sharing_completed', {
+        title: summary.title
+      });
     } catch (error) {
       console.warn('Erreur lors du partage:', error);
       setIsModalOpen(false);
@@ -160,7 +165,7 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
         tabIndex={0}
         title="Partager cet échange"
       >
-        {/ios/.test(navigator.userAgent) ? (
+        {/iphone|ipad/i.test(navigator.userAgent) ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
