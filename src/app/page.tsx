@@ -16,7 +16,9 @@ export default function Home() {
   const chatInputRef = useRef<{ focus: () => void }>(null);
 
   useEffect(() => {
-    if (!isThinking) {
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    
+    if (!isThinking && !isMobile) {
       setTimeout(() => {
         chatInputRef.current?.focus();
       }, 0);
