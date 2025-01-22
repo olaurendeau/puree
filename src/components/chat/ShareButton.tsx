@@ -148,9 +148,9 @@ export const ShareButton = ({ userMessage, assistantMessage }: ShareButtonProps)
     } catch (error) {
         const message = error instanceof Error ? error.message : 'Unknown error';
         console.warn('Erreur lors du partage:', message);
-        sendGAEvent('event', 'sharing_failed', {
-            error: message
-        });
+        //sendGAEvent('event', 'sharing_failed', {
+        //    error: message
+        //});
         setMessage('Une erreur est survenue lors du partage : ' + message);
     }
   };
