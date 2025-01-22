@@ -47,6 +47,11 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} />
         {children}
+        {process.env.VERCEL_GIT_COMMIT_SHA && (
+          <div className="fixed bottom-2 right-2 text-xs text-gray-400 font-mono">
+            {process.env.VERCEL_GIT_COMMIT_SHA.slice(0, 7)}
+          </div>
+        )}
       </body>
     </html>
   );
