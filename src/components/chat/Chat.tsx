@@ -9,7 +9,7 @@ import { ThinkingIndicator } from '@/components/chat/ThinkingIndicator';
 import { useChatScroll } from '@/hooks/chat/useChatScroll';
 import { messageService } from '@/services/chat/messageService';
 
-export const Chat = () => {
+export const Chat = ({ locale }: { locale: string }) => {
   const t = useTranslations('Index');
   const [messages, setMessages] = useState<Message[]>([]);
   const [isThinking, setIsThinking] = useState(false);
@@ -71,6 +71,7 @@ export const Chat = () => {
               {messages.map((message, index) => (
                 <ChatMessage 
                   key={`${message.role}-${index}-${message.content.substring(0, 10)}`}
+                  locale={locale}
                   message={message}
                   previousMessage={index > 0 ? messages[index - 1] : undefined}
                 />

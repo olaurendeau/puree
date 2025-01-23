@@ -1,10 +1,10 @@
 {
   "Index": {
-    "title": "Purée - L'IA che ti scoraggia dall'usare l'IA",
-    "description": "Un'IA ironica che incoraggia a trovare soluzioni senza IA",
+    "title": "Purée - L'IA che ti impedisce di usare l'IA",
+    "description": "Un'IA ironica che ti incoraggia a trovare soluzioni senza IA",
     "welcome": "Benvenuto su purée",
-    "tagline": "L'IA che ti scoraggia dall'usare l'IA",
-    "error": "Scusa, ho incontrato un errore. Puoi riprovare?"
+    "tagline": "L'IA che ti impedisce di usare l'IA",
+    "error": "Spiacente, si è verificato un errore. Puoi riprovare?"
   },
   "Chat": {
     "placeholder": "Scrivi il tuo messaggio qui...",
@@ -13,16 +13,26 @@
     "userAvatar": "Avatar utente",
     "assistantAvatar": "Avatar assistente",
     "shareExchange": "Condividi questo scambio",
+    "starConversation": "Aggiungi ai preferiti",
+    "unstarConversation": "Rimuovi dai preferiti",
+    "upvote": "Vota per questa conversazione",
+    "alreadyUpvoted": "Hai già votato per questa conversazione",
+    "starredMessage": "Sono contento che ti sia piaciuta questa conversazione! È stata aggiunta ai messaggi popolari, ora tutti possono vederla e votarla.",
     "close": "Chiudi",
-    "sharePreview": "Anteprima condivisione",
-    "downloadMessage": "La conversazione è stata scaricata, apri la tua cartella download.",
+    "sharePreview": "Anteprima",
+    "downloadMessage": "La conversazione è stata scaricata, apri la tua cartella dei download.",
     "errorMessage": "Si è verificato un errore durante la condivisione:",
     "generatedWith": "Generato con purée - https://puree.chat",
-    "inputPlaceholder": "Fai una domanda a purée..."
+    "inputPlaceholder": "Fai la tua domanda a purée..."
+  },
+  "Starred": {
+    "title": "Conversazioni Popolari",
+    "noStarredConversations": "Ancora nessuna conversazione popolare"
   },
   "Navigation": {
     "home": "Home",
     "manifesto": "Manifesto",
+    "starred": "Popolare",
     "changeLanguage": "Cambia lingua",
     "switchTo": "Passa a"
   },

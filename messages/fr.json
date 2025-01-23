@@ -13,6 +13,11 @@
     "userAvatar": "Avatar utilisateur",
     "assistantAvatar": "Avatar assistant",
     "shareExchange": "Partager cet échange",
+    "starConversation": "Marquer comme favori",
+    "unstarConversation": "Retirer des favoris",
+    "upvote": "Voter pour cette conversation",
+    "alreadyUpvoted": "Vous avez déjà voté pour cette conversation",
+    "starredMessage": "Content que vous ayiez aimé cette conversation ! Elle a été ajoutée aux messages populaires, tout le monde peut maintenant la voir et voter pour elle.",
     "close": "Fermer",
     "sharePreview": "Prévisualisation du partage",
     "downloadMessage": "La conversation a été téléchargée, ouvrez votre dossier de téléchargement.",
@@ -20,9 +25,14 @@
     "generatedWith": "Généré avec purée - https://puree.chat",
     "inputPlaceholder": "Pose ta question à la purée..."
   },
+  "Starred": {
+    "title": "Conversations populaires",
+    "noStarredConversations": "Aucune conversation populaires pour le moment"
+  },
   "Navigation": {
     "home": "Accueil",
     "manifesto": "Manifeste",
+    "starred": "Populaires",
     "changeLanguage": "Changer de langue",
     "switchTo": "Passer en"
   },

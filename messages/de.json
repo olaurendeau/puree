@@ -1,10 +1,10 @@
 {
   "Index": {
     "title": "Purée - Die KI, die dich davon abhält, KI zu nutzen",
-    "description": "Eine ironische KI, die dazu ermutigt, Lösungen ohne KI zu finden",
+    "description": "Eine ironische KI, die dich ermutigt, Lösungen ohne KI zu finden",
     "welcome": "Willkommen bei purée",
     "tagline": "Die KI, die dich davon abhält, KI zu nutzen",
-    "error": "Entschuldigung, ich bin auf einen Fehler gestoßen. Kannst du es noch einmal versuchen?"
+    "error": "Entschuldigung, ein Fehler ist aufgetreten. Kannst du es noch einmal versuchen?"
   },
   "Chat": {
     "placeholder": "Schreibe deine Nachricht hier...",
@@ -13,16 +13,26 @@
     "userAvatar": "Benutzer-Avatar",
     "assistantAvatar": "Assistenten-Avatar",
     "shareExchange": "Diesen Austausch teilen",
+    "starConversation": "Zu Favoriten hinzufügen",
+    "unstarConversation": "Aus Favoriten entfernen",
+    "upvote": "Für diese Konversation stimmen",
+    "alreadyUpvoted": "Du hast bereits für diese Konversation gestimmt",
+    "starredMessage": "Schön, dass dir diese Konversation gefallen hat! Sie wurde zu den beliebten Nachrichten hinzugefügt, jetzt können alle sie sehen und dafür stimmen.",
     "close": "Schließen",
-    "sharePreview": "Vorschau teilen",
-    "downloadMessage": "Das Gespräch wurde heruntergeladen, öffne deinen Download-Ordner.",
+    "sharePreview": "Vorschau",
+    "downloadMessage": "Die Konversation wurde heruntergeladen, öffne deinen Download-Ordner.",
     "errorMessage": "Beim Teilen ist ein Fehler aufgetreten:",
     "generatedWith": "Generiert mit purée - https://puree.chat",
-    "inputPlaceholder": "Stelle eine Frage an purée..."
+    "inputPlaceholder": "Stelle deine Frage an purée..."
+  },
+  "Starred": {
+    "title": "Beliebte Konversationen",
+    "noStarredConversations": "Noch keine beliebten Konversationen"
   },
   "Navigation": {
-    "home": "Startseite",
+    "home": "Start",
     "manifesto": "Manifest",
+    "starred": "Beliebt",
     "changeLanguage": "Sprache ändern",
     "switchTo": "Wechseln zu"
   },
