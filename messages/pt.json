@@ -1,10 +1,10 @@
 {
   "Index": {
-    "title": "Purée - A IA que te desencoraja a usar IA",
-    "description": "Uma IA irônica que incentiva a encontrar soluções sem IA",
+    "title": "Purée - A IA que te impede de usar IA",
+    "description": "Uma IA irônica que te encoraja a encontrar soluções sem IA",
     "welcome": "Bem-vindo ao purée",
-    "tagline": "A IA que te desencoraja a usar IA",
-    "error": "Desculpe, encontrei um erro. Pode tentar novamente?"
+    "tagline": "A IA que te impede de usar IA",
+    "error": "Desculpe, ocorreu um erro. Pode tentar novamente?"
   },
   "Chat": {
     "placeholder": "Escreva sua mensagem aqui...",
@@ -12,17 +12,27 @@
     "share": "Compartilhar",
     "userAvatar": "Avatar do usuário",
     "assistantAvatar": "Avatar do assistente",
-    "shareExchange": "Compartilhar esta conversa",
+    "shareExchange": "Compartilhar esta troca",
+    "starConversation": "Adicionar aos favoritos",
+    "unstarConversation": "Remover dos favoritos",
+    "upvote": "Votar nesta conversa",
+    "alreadyUpvoted": "Você já votou nesta conversa",
+    "starredMessage": "Que bom que você gostou desta conversa! Ela foi adicionada às mensagens populares, agora todos podem vê-la e votar nela.",
     "close": "Fechar",
-    "sharePreview": "Pré-visualização do compartilhamento",
+    "sharePreview": "Visualizar",
     "downloadMessage": "A conversa foi baixada, abra sua pasta de downloads.",
     "errorMessage": "Ocorreu um erro ao compartilhar:",
     "generatedWith": "Gerado com purée - https://puree.chat",
-    "inputPlaceholder": "Faça uma pergunta ao purée..."
+    "inputPlaceholder": "Faça sua pergunta ao purée..."
+  },
+  "Starred": {
+    "title": "Conversas Populares",
+    "noStarredConversations": "Ainda não há conversas populares"
   },
   "Navigation": {
     "home": "Início",
     "manifesto": "Manifesto",
+    "starred": "Popular",
     "changeLanguage": "Mudar idioma",
     "switchTo": "Mudar para"
   },

@@ -9,6 +9,7 @@ export type ChatInputProps = {
 };
 
 export type ChatMessageProps = {
+  locale: string;
   message: Message;
   previousMessage?: Message;
 };
@@ -16,4 +17,11 @@ export type ChatMessageProps = {
 export type ShareButtonProps = {
   userMessage: Message;
   assistantMessage: Message;
+};
+
+export type StarButtonProps = {
+  userMessage: Message;
+  assistantMessage: Message;
+  isStarred: boolean;
+  onToggleStar: () => void;
 };

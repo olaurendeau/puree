@@ -8,7 +8,7 @@ export default async function Home({params}: {params: Promise<{locale: string}>}
     <div className="flex flex-col h-[100dvh] bg-[#0C0C0C] text-white">
       <Header locale={locale} />
       <main className="flex-1 flex flex-col min-h-0 pb-14" role="main">
-        <Chat />
+        <Chat locale={locale} />
       </main>
       <Footer locale={locale} />
     </div>

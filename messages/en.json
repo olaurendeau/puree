@@ -1,28 +1,38 @@
 {
   "Index": {
-    "title": "Purée - The AI that discourages you from using AI",
-    "description": "An ironic AI that encourages finding solutions without AI",
-    "welcome": "Welcome to puree",
-    "tagline": "The AI that discourages you from using AI",
-    "error": "Sorry, I encountered an error. Can you try again?"
+    "title": "Purée - The AI that prevents you from using AI",
+    "description": "An ironic AI that encourages you to find solutions without AI",
+    "welcome": "Welcome to purée",
+    "tagline": "The AI that prevents you from using AI",
+    "error": "Sorry, an error occurred. Can you try again?"
   },
   "Chat": {
-    "placeholder": "Type your message here...",
+    "placeholder": "Write your message here...",
     "send": "Send",
     "share": "Share",
-    "userAvatar": "User avatar",
-    "assistantAvatar": "Assistant avatar",
+    "userAvatar": "User Avatar",
+    "assistantAvatar": "Assistant Avatar",
     "shareExchange": "Share this exchange",
+    "starConversation": "Add to favorites",
+    "unstarConversation": "Remove from favorites",
+    "upvote": "Vote for this conversation",
+    "alreadyUpvoted": "You have already voted for this conversation",
+    "starredMessage": "Glad you liked this conversation! It has been added to popular messages, now everyone can see it and vote for it.",
     "close": "Close",
-    "sharePreview": "Share preview",
-    "downloadMessage": "The conversation has been downloaded, check your downloads folder.",
+    "sharePreview": "Preview",
+    "downloadMessage": "The conversation has been downloaded, open your downloads folder.",
     "errorMessage": "An error occurred while sharing:",
-    "generatedWith": "Generated with puree - https://puree.chat",
-    "inputPlaceholder": "Ask your question to puree..."
+    "generatedWith": "Generated with purée - https://puree.chat",
+    "inputPlaceholder": "Ask your question to purée..."
+  },
+  "Starred": {
+    "title": "Popular Conversations",
+    "noStarredConversations": "No popular conversations yet"
   },
   "Navigation": {
     "home": "Home",
     "manifesto": "Manifesto",
+    "starred": "Popular",
     "changeLanguage": "Change language",
     "switchTo": "Switch to"
   },
