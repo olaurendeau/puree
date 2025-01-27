@@ -37,7 +37,12 @@ export const StarredConversationList = ({ locale, initialConversations, hasMoreI
       const page = Math.floor(conversations.length / PAGE_SIZE);
       const result = await getStarredConversations(language, page, PAGE_SIZE);
       
-      setConversations(prev => [...prev, ...result.conversations]);
+      // Vérifier les doublons avant d'ajouter les nouvelles conversations
+      const newConversations = result.conversations.filter(
+        newConv => !conversations.some(existingConv => existingConv.id === newConv.id)
+      );
+      
+      setConversations(prev => [...prev, ...newConversations]);
       setHasMore(result.hasMore);
     } catch (error) {
       console.error('Error loading conversations:', error);
