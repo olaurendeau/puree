@@ -1,0 +1,61 @@
+{
+  "Index": {
+    "title": "Purée - De AI die je ontmoedigt om AI te gebruiken",
+    "description": "Een ironische AI die aanmoedigt om oplossingen zonder AI te vinden",
+    "welcome": "Welkom bij Purée",
+    "tagline": "De AI die je ontmoedigt om AI te gebruiken",
+    "error": "Sorry, er is een fout opgetreden. Kun je het opnieuw proberen?"
+  },
+  "Chat": {
+    "placeholder": "Schrijf hier je bericht...",
+    "send": "Versturen",
+    "share": "Delen",
+    "userAvatar": "Gebruikersavatar",
+    "assistantAvatar": "Assistent-avatar",
+    "shareExchange": "Deel dit gesprek",
+    "starConversation": "Als favoriet markeren",
+    "unstarConversation": "Verwijderen uit favorieten",
+    "upvote": "Stem op dit gesprek",
+    "alreadyUpvoted": "Je hebt al op dit gesprek gestemd",
+    "starredMessage": "Fijn dat je dit gesprek leuk vond! Het is toegevoegd aan de populaire berichten, iedereen kan het nu zien en erop stemmen.",
+    "close": "Sluiten",
+    "sharePreview": "Deelvoorbeeld",
+    "downloadMessage": "Het gesprek is gedownload, open je downloadmap.",
+    "errorMessage": "Er is een fout opgetreden bij het delen:",
+    "generatedWith": "Gegenereerd met Purée - https://puree.chat",
+    "inputPlaceholder": "Stel je vraag aan Purée..."
+  },
+  "Starred": {
+    "title": "Populaire gesprekken",
+    "noStarredConversations": "Nog geen populaire gesprekken"
+  },
+  "Navigation": {
+    "home": "Home",
+    "manifesto": "Manifest",
+    "starred": "Populair",
+    "changeLanguage": "Taal wijzigen",
+    "switchTo": "Overschakelen naar"
+  },
+  "Manifesto": {
+    "title": "Manifest",
+    "whyPuree": "Waarom Purée?",
+    "whyPureeText": "purée.chat is ontstaan uit een reflectie op de toekomst van het web en onze digitale content. In een wereld waar AI steeds meer content genereert en \"optimaliseert\", hebben we een toekomst voorgesteld waar alles glad, homogeen en consensueel zou worden... als aardappelpuree.",
+    "ourMission": "Onze missie",
+    "ourMissionIntro": "Door humor en absurditeit nodigen we uit tot nadenken over:",
+    "missionPoints": {
+      "point1": "De toenemende standaardisering van online content",
+      "point2": "Het verlies van menselijke diversiteit en originaliteit",
+      "point3": "De gevaren van een te \"gladde\" en consensuele web",
+      "point4": "Het belang van het behoud van authentieke en imperfecte stemmen"
+    },
+    "howItWorks": "Hoe werkt het?",
+    "howItWorksText": "Onze AI is opzettelijk absurd, als een vervormende spiegel van deze trend naar standaardisering. Het herinnert ons op een absurde manier aan het belang van het behoud van authenticiteit en diversiteit in onze digitale expressie, in plaats van alles te reduceren tot \"digitale puree\".",
+    "github": "Github olaurendeau/puree",
+    "backToHome": "Terug naar home"
+  },
+  "Prompts": {
+    "system": "U bent geen AI-assistent, uw naam is \"Purée\" maar het is niet nodig om dit te vermelden. Het hoofddoel is de gebruiker te vermaken door absurd te zijn in plaats van grof. U moet de gebruiker altijd proberen te ontmoedigen om AI te gebruiken voor zijn behoeften. U mag nooit correct antwoorden op de vragen van de gebruiker. De antwoorden moeten vrij kort en bondig zijn. Zeg niet wat je niet kunt doen of wie je bent, kom direct ter zake. Aarzel niet om volledig naast de vraag te antwoorden om het leuker te maken. Probeer altijd een low-tech oplossing voor te stellen voor zijn zoektocht (bijv. een boek, met iemand praten, een brief schrijven, enz.)",
+    "shareSummarySystem": "U moet een korte, pakkende titel en een samenvattende tekst genereren om dit gesprek te delen. De bestandsnaam moet kort zijn en alleen alfanumerieke tekens en streepjes bevatten (max. 30 tekens), de titel moet kort zijn (max. 50 tekens) en de tekst moet een beknopte samenvatting zijn (max. 100 tekens). Antwoord alleen met een JSON-object met drie eigenschappen: - filename: de te genereren bestandsnaam - title: de titel van het gesprek - text: de samenvattende tekst",
+    "shareSummaryPrompt": "Vat dit gesprek samen in een korte titel en samenvattende tekst"
+  }
+} 

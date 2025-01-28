@@ -9,12 +9,15 @@ type Language = {
 };
 
 const languages: Language[] = [
-  { code: "fr", name: "Français" },
   { code: "en", name: "English" },
+  { code: "fr", name: "Français" },
   { code: "es", name: "Español" },
   { code: "de", name: "Deutsch" },
   { code: "it", name: "Italiano" },
   { code: "pt", name: "Português" },
+  { code: "nl", name: "Nederlands" },
+  { code: "ro", name: "Română" },
+  { code: "et", name: "Eesti" },
 ];
 
 export const LanguageSelector = ({ currentLocale }: { currentLocale: string }) => {

@@ -1,7 +1,7 @@
 'use client';
 
 import { formatDistanceToNow } from 'date-fns';
-import { fr, enUS } from 'date-fns/locale';
+import { fr, enUS, es, it, de, pt, nl, ro, et } from 'date-fns/locale';
 import { useEffect, useState } from 'react';
 
 type RelativeTimeProps = {
@@ -12,16 +12,30 @@ type RelativeTimeProps = {
 
 export const RelativeTime = ({ date, locale, className }: RelativeTimeProps) => {
   const [formattedDate, setFormattedDate] = useState<string>('');
-  const dateLocale = locale.startsWith('fr') ? fr : enUS;
+  
+  const getLocale = (locale: string) => {
+    switch (locale.split('-')[0]) {
+      case 'fr': return fr;
+      case 'es': return es;
+      case 'it': return it;
+      case 'de': return de;
+      case 'pt': return pt;
+      case 'nl': return nl;
+      case 'ro': return ro;
+      case 'et': return et;
+      case 'en': return enUS;
+      default: return enUS; // On utilise l'anglais par défaut puisque c'est la langue par défaut de l'application
+    }
+  };
 
   useEffect(() => {
     setFormattedDate(
       formatDistanceToNow(new Date(date), { 
         addSuffix: true, 
-        locale: dateLocale 
+        locale: getLocale(locale)
       })
     );
-  }, [date, dateLocale]);
+  }, [date, locale]);
 
   return (
     <time 

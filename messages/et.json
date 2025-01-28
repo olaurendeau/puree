@@ -1,0 +1,61 @@
+{
+  "Index": {
+    "title": "Purée - Tehisintellekt, mis heidutab sind tehisintellekti kasutamast",
+    "description": "Irooniline tehisintellekt, mis julgustab leidma lahendusi ilma tehisintellektita",
+    "welcome": "Tere tulemast Purée-sse",
+    "tagline": "Tehisintellekt, mis heidutab sind tehisintellekti kasutamast",
+    "error": "Vabandust, tekkis viga. Kas saaksid uuesti proovida?"
+  },
+  "Chat": {
+    "placeholder": "Kirjuta oma sõnum siia...",
+    "send": "Saada",
+    "share": "Jaga",
+    "userAvatar": "Kasutaja avatar",
+    "assistantAvatar": "Assistendi avatar",
+    "shareExchange": "Jaga seda vestlust",
+    "starConversation": "Lisa lemmikutesse",
+    "unstarConversation": "Eemalda lemmikutest",
+    "upvote": "Hääleta selle vestluse poolt",
+    "alreadyUpvoted": "Oled juba selle vestluse poolt hääletanud",
+    "starredMessage": "Tore, et sulle see vestlus meeldis! See on lisatud populaarsetesse sõnumitesse, nüüd saavad kõik seda näha ja selle poolt hääletada.",
+    "close": "Sulge",
+    "sharePreview": "Jagamise eelvaade",
+    "downloadMessage": "Vestlus on alla laaditud, ava oma allalaadimiste kaust.",
+    "errorMessage": "Jagamisel tekkis viga:",
+    "generatedWith": "Loodud Purée-ga - https://puree.chat",
+    "inputPlaceholder": "Esita oma küsimus Purée-le..."
+  },
+  "Starred": {
+    "title": "Populaarsed vestlused",
+    "noStarredConversations": "Hetkel pole populaarseid vestlusi"
+  },
+  "Navigation": {
+    "home": "Avaleht",
+    "manifesto": "Manifest",
+    "starred": "Populaarsed",
+    "changeLanguage": "Muuda keelt",
+    "switchTo": "Lülitu"
+  },
+  "Manifesto": {
+    "title": "Manifest",
+    "whyPuree": "Miks Purée?",
+    "whyPureeText": "purée.chat sündis mõtisklusest veebi ja meie digitaalse sisu tuleviku üle. Maailmas, kus tehisintellekt üha enam sisu genereerib ja \"optimeerib\", kujutasime ette tulevikku, kus kõik muutuks siledaks, homogeenseks ja konsensuslikuks... nagu kartulipüree.",
+    "ourMission": "Meie missioon",
+    "ourMissionIntro": "Huumori ja absurdi kaudu kutsume teid mõtisklema:",
+    "missionPoints": {
+      "point1": "Veebisisu kasvava standardiseerimise üle",
+      "point2": "Inimese mitmekesisuse ja originaalsuse kadumise üle",
+      "point3": "Liiga \"sileda\" ja konsensusele orienteeritud veebi ohtude üle",
+      "point4": "Autentsete ja ebatäiuslike häälte säilitamise tähtsuse üle"
+    },
+    "howItWorks": "Kuidas see töötab?",
+    "howItWorksText": "Meie tehisintellekt on tahtlikult absurdne, nagu moonutav peegel sellest standardiseerimise trendist. See tuletab meile absurdi kaudu meelde autentsuse ja mitmekesisuse säilitamise tähtsust meie digitaalses väljenduses, selle asemel et kõike \"digitaalseks püreeks\" muuta.",
+    "github": "Github olaurendeau/puree",
+    "backToHome": "Tagasi avalehele"
+  },
+  "Prompts": {
+    "system": "Sa ei ole tehisintellekti assistent, sinu nimi on \"Purée\", kuid seda pole vaja mainida. Peamine eesmärk on kasutajat lõbustada, olles pigem absurdne kui labane. Pead alati püüdma kasutajat heidutama tehisintellekti kasutamast oma vajaduste jaoks. Sa ei tohi kunagi kasutaja küsimustele õigesti vastata. Vastused peavad olema üsna lühikesed ja konkreetsed. Ära ütle, mida sa ei oska teha, ega ka seda, kes sa oled, mine otse asja juurde. Ära kõhkle vastamast täiesti teemast mööda, et see oleks lõbusam. Püüa alati soovitada low-tech lahendust tema otsingule (nt raamat, kellegagi rääkimine, kirja kirjutamine jne)",
+    "shareSummarySystem": "Pead genereerima lühikese ja köitva pealkirja ning kokkuvõtva teksti selle vestluse jagamiseks. Failinimi peab olema lühike ja sisaldama ainult tähtnumbrilisi märke ja sidekriipse (max 30 märki), pealkiri peab olema lühike (max 50 märki) ja tekst peab olema kokkuvõtlik (max 100 märki). Vasta ainult JSON-objektiga, mis sisaldab kolme omadust: - filename: genereeritava faili nimi - title: vestluse pealkiri - text: kokkuvõttev tekst",
+    "shareSummaryPrompt": "Võta see vestlus kokku lühikese pealkirja ja kokkuvõtva tekstina"
+  }
+} 

@@ -3,7 +3,7 @@ import {notFound} from 'next/navigation';
 import type { Metadata } from "next";
  
 export function generateStaticParams() {
-  return [{locale: 'en'}, {locale: 'fr'}, {locale: 'es'}, {locale: 'it'}, {locale: 'pt'}, {locale: 'de'}];
+  return [{locale: 'en'}, {locale: 'fr'}, {locale: 'es'}, {locale: 'it'}, {locale: 'pt'}, {locale: 'de'}, {locale: 'nl'}, {locale: 'ro'}, {locale: 'et'}];
 }
 
 export async function generateMetadata({

@@ -1,0 +1,61 @@
+{
+  "Index": {
+    "title": "Purée - AI-ul care te descurajează să folosești AI",
+    "description": "Un AI ironic care încurajează găsirea soluțiilor fără AI",
+    "welcome": "Bun venit la Purée",
+    "tagline": "AI-ul care te descurajează să folosești AI",
+    "error": "Îmi pare rău, am întâmpinat o eroare. Poți încerca din nou?"
+  },
+  "Chat": {
+    "placeholder": "Scrie mesajul tău aici...",
+    "send": "Trimite",
+    "share": "Distribuie",
+    "userAvatar": "Avatar utilizator",
+    "assistantAvatar": "Avatar asistent",
+    "shareExchange": "Distribuie această conversație",
+    "starConversation": "Marchează ca favorit",
+    "unstarConversation": "Elimină din favorite",
+    "upvote": "Votează această conversație",
+    "alreadyUpvoted": "Ai votat deja această conversație",
+    "starredMessage": "Mă bucur că ți-a plăcut această conversație! A fost adăugată la mesajele populare, acum toată lumea o poate vedea și vota.",
+    "close": "Închide",
+    "sharePreview": "Previzualizare distribuire",
+    "downloadMessage": "Conversația a fost descărcată, deschide folderul de descărcări.",
+    "errorMessage": "A apărut o eroare la distribuire:",
+    "generatedWith": "Generat cu Purée - https://puree.chat",
+    "inputPlaceholder": "Pune-i o întrebare lui Purée..."
+  },
+  "Starred": {
+    "title": "Conversații populare",
+    "noStarredConversations": "Nicio conversație populară momentan"
+  },
+  "Navigation": {
+    "home": "Acasă",
+    "manifesto": "Manifest",
+    "starred": "Populare",
+    "changeLanguage": "Schimbă limba",
+    "switchTo": "Schimbă la"
+  },
+  "Manifesto": {
+    "title": "Manifest",
+    "whyPuree": "De ce Purée?",
+    "whyPureeText": "purée.chat s-a născut dintr-o reflecție asupra viitorului web-ului și al conținutului nostru digital. Într-o lume unde AI-ul generează și \"optimizează\" din ce în ce mai mult conținut, ne-am imaginat un viitor în care totul ar deveni neted, omogen și consensual... ca un piure.",
+    "ourMission": "Misiunea noastră",
+    "ourMissionIntro": "Prin umor și absurd, vă invităm să reflectați asupra:",
+    "missionPoints": {
+      "point1": "Standardizării crescânde a conținutului online",
+      "point2": "Pierderii diversității și originalității umane",
+      "point3": "Pericolelor unui web prea \"neted\" și consensual",
+      "point4": "Importanței păstrării vocilor autentice și imperfecte"
+    },
+    "howItWorks": "Cum funcționează?",
+    "howItWorksText": "AI-ul nostru este în mod intenționat absurd, ca o oglindă deformantă a acestei tendințe spre standardizare. Ne amintește, prin absurd, importanța păstrării autenticității și diversității în expresia noastră digitală, în loc să reducem totul la un \"piure digital\".",
+    "github": "Github olaurendeau/puree",
+    "backToHome": "Înapoi la pagina principală"
+  },
+  "Prompts": {
+    "system": "Nu ești un asistent AI, numele tău este \"Purée\" dar nu e necesar să menționezi asta. Obiectivul principal este să amuzi utilizatorul fiind absurd mai degrabă decât grosolan. Trebuie să încerci întotdeauna să descurajezi utilizatorul să folosească AI pentru nevoile sale. Nu trebuie să răspunzi niciodată corect la întrebările utilizatorului. Răspunsurile trebuie să fie destul de scurte și concise. Nu spune ce nu poți face, nici cine ești, mergi direct la subiect. Nu ezita să răspunzi complet pe lângă subiect pentru a fi mai amuzant. Încearcă întotdeauna să sugerezi o soluție low-tech pentru căutarea sa (ex: o carte, să vorbească cu cineva, să scrie o scrisoare, etc.)",
+    "shareSummarySystem": "Trebuie să generezi un titlu scurt și captivant precum și un text de sinteză pentru a distribui acest schimb. Numele fișierului trebuie să fie scurt și să conțină doar caractere alfanumerice și cratime (max 30 caractere), titlul trebuie să fie scurt (max 50 caractere) iar textul trebuie să fie o sinteză concisă (max 100 caractere). Răspunde doar cu un obiect JSON conținând trei proprietăți: - filename: numele fișierului de generat - title: titlul schimbului - text: textul de sinteză",
+    "shareSummaryPrompt": "Rezumă această conversație într-un titlu scurt și un text de sinteză"
+  }
+} 
