@@ -1,0 +1,14 @@
+{
+  "mode": "integrated",
+  "language": { "human": "français" },
+  "check": {
+    "full": "docker compose run --rm app sh -c 'npm run lint && npx tsc --noEmit && npm test'",
+    "cleanup": "docker compose down --remove-orphans"
+  },
+  "commands": [
+    { "cmd": "npm",  "deny_args": ".*", "reason": "Tout tourne dans Docker : docker compose run --rm app npm …" },
+    { "cmd": "npx",  "deny_args": ".*", "reason": "Tout tourne dans Docker : docker compose run --rm app npx …" },
+    { "cmd": "node", "deny_args": ".*", "reason": "Tout tourne dans Docker : docker compose run --rm app node …" }
+  ],
+  "db_hosts_allowed": ["db", "localhost", "127.0.0.1"]
+}
