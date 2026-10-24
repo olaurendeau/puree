@@ -4,6 +4,8 @@ import { Message } from '@/domain/chat/types';
 import Anthropic from '@anthropic-ai/sdk';
 import { getTranslations } from 'next-intl/server';
 
+const CLAUDE_MODEL = 'claude-haiku-5-5';
+
 const anthropic = new Anthropic({
   apiKey: process.env.CLAUDE_API_KEY,
 });
@@ -16,7 +18,7 @@ export async function generateAIResponse(messages: Message[]): Promise<string> {
         const systemPrompt = t('system');
 
         const response = await anthropic.messages.create({
-            model: 'claude-3-haiku-20240307',
+            model: CLAUDE_MODEL,
             system: systemPrompt,
             messages: messages.map(msg => ({
                 role: msg.role,
@@ -59,7 +61,7 @@ export async function generateShareSummary(messages: Message[]): Promise<ShareSu
         if (!process.env.CLAUDE_API_KEY) throw new Error('Claude API key is not configured');
 
         const response = await anthropic.messages.create({
-            model: 'claude-3-haiku-20240307',
+            model: CLAUDE_MODEL,
             system: t('shareSummarySystem'),
             messages: msgs.map(msg => ({
                 role: msg.role,
