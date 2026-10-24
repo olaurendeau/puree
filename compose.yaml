@@ -1,0 +1,36 @@
+services:
+  app:
+    build: ./docker
+    user: node
+    entrypoint: ["sh", "/app/docker/entrypoint.sh"]
+    command: ["npm", "run", "dev"]
+    environment:
+      DATABASE_URL: postgres://puree:puree@db:5432/puree
+      NEXT_TELEMETRY_DISABLED: "1"
+    ports:
+      - "${APP_PORT:-3000}:3000"
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+    # No depends_on: `docker compose run app ...` (the check) must not start
+    # Postgres. `docker compose up` starts both services anyway.
+
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: puree
+      POSTGRES_PASSWORD: puree
+      POSTGRES_DB: puree
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./src/db/migrations:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U puree -d puree"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    # No published port: docker compose exec db psql -U puree
+
+volumes:
+  node_modules:
+  pgdata:

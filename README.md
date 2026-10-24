@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# puree.chat
 
-## Getting Started
+A [Next.js](https://nextjs.org) app backed by Postgres. Everything (dev server,
+database, lint, type-check, tests) runs in Docker: no Node.js or Postgres is
+needed on the host.
 
-First, run the development server:
+## Run the app
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+docker compose up
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This starts the Next.js dev server and Postgres. Open
+[http://localhost:3000](http://localhost:3000). If port 3000 is taken, pick
+another one with `APP_PORT=3001 docker compose up`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The first start installs the dependencies into a Docker volume (a few minutes).
+They are installed again automatically whenever `package-lock.json` changes.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Stop with `docker compose down --remove-orphans`.
 
-## Learn More
+## Check the project
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+docker compose run --rm app sh -c 'npm run lint && npx tsc --noEmit && npm test'
+docker compose down --remove-orphans
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This does not start Postgres. Any other npm command works the same way:
+`docker compose run --rm app npm <command>`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Environment variables
 
-## Deploy on Vercel
+Next.js reads `.env.local` from the repository root. Copy `.env.example` to
+`.env.local` and fill in the values:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Variable                | Used for                                                      |
+| ----------------------- | ------------------------------------------------------------- |
+| `CLAUDE_API_KEY`        | Anthropic API key for the chat                                |
+| `DATABASE_URL`          | Postgres connection (set by `compose.yaml` inside Docker)     |
+| `NEXT_PUBLIC_GA_ID`     | Google Analytics id                                           |
+| `VERCEL_GIT_COMMIT_SHA` | Commit shown in the footer (set by Vercel)                    |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Database
+
+Postgres runs in the `db` service with no port published on the host. Open a
+shell on it with:
+
+```bash
+docker compose exec db psql -U puree
+```
+
+The SQL files in `src/db/migrations` run once, when the database volume is
+created. After adding or changing a migration, recreate the database (this
+deletes its data):
+
+```bash
+docker compose down -v
+docker compose up
+```
+
+## After changing `docker/Dockerfile`
+
+```bash
+docker compose build
+```
