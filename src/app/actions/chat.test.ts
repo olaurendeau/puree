@@ -93,6 +93,27 @@ describe('chat actions', () => {
     });
   });
 
+  describe('request parameters', () => {
+    const summary = JSON.stringify({ filename: 'f', title: 't', text: 'x' });
+
+    it.each([
+      ['generateAIResponse', () => generateAIResponse(messages), 'ok'],
+      ['generateShareSummary', () => generateShareSummary(messages), summary],
+    ])('%s disables thinking and sends no sampling parameter', async (_name, call, body) => {
+      create.mockResolvedValue(reply([text(body)]));
+
+      await call();
+
+      expect(create).toHaveBeenCalledTimes(1);
+      const params = create.mock.calls[0][0];
+      expect(params.thinking).toEqual({ type: 'disabled' });
+      expect(params.max_tokens).toBe(1024);
+      expect(params).not.toHaveProperty('temperature');
+      expect(params).not.toHaveProperty('top_p');
+      expect(params).not.toHaveProperty('top_k');
+    });
+  });
+
   describe('generateShareSummary', () => {
     const summary = { filename: 'omelette', title: 'Omelette', text: 'Une omelette' };
     const expected = {

@@ -10,6 +10,10 @@ const anthropic = new Anthropic({
   apiKey: process.env.CLAUDE_API_KEY,
 });
 
+// claude-haiku-5-5 thinks by default and thinking tokens count toward max_tokens;
+// turn it off to keep the old budget. SDK 0.33 doesn't type `thinking`, so it is spread in.
+const DISABLE_THINKING = { thinking: { type: 'disabled' } };
+
 // Stop reasons after which the response is not an answer, even if it carries text.
 const UNUSABLE_STOP_REASONS = ['refusal'];
 
@@ -68,6 +72,7 @@ export async function generateAIResponse(messages: Message[]): Promise<string> {
                 content: msg.content,
             })),
             max_tokens: 1024,
+            ...DISABLE_THINKING,
         });
 
         const text = extractText(response, 'answer');
@@ -112,6 +117,7 @@ export async function generateShareSummary(messages: Message[]): Promise<ShareSu
                 content: msg.content,
             })),
             max_tokens: 1024,
+            ...DISABLE_THINKING,
         });
 
         const jsonResponse = extractText(response, 'share summary');
