@@ -26,7 +26,9 @@ docker compose run --rm app sh -c 'npm run lint && npx tsc --noEmit && npm test'
 docker compose down --remove-orphans
 ```
 
-This does not start Postgres. Any other npm command works the same way:
+This does not start Postgres. CI runs this same command on every pull request
+(with `APP_USER=root`, because the runner's workspace is not owned by uid 1000).
+Any other npm command works the same way:
 `docker compose run --rm app npm <command>`.
 
 ## Environment variables
