@@ -25,7 +25,6 @@ export async function generateAIResponse(messages: Message[]): Promise<string> {
                 content: msg.content,
             })),
             max_tokens: 1024,
-            temperature: 0.7,
         });
 
         return response.content[0].type === 'text' ? response.content[0].text : '';
@@ -68,7 +67,6 @@ export async function generateShareSummary(messages: Message[]): Promise<ShareSu
                 content: msg.content,
             })),
             max_tokens: 1024,
-            temperature: 0.7,
         });
 
         const jsonResponse = response.content[0]?.type === 'text' ? response.content[0].text : null;
