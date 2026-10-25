@@ -83,7 +83,11 @@ Create the check by hand on updown.io:
 - **Alerts**: add the contacts to notify.
 
 Vercel does not retry a failed cron run, so a single failed day (no pulse)
-alerts after at most 26 hours.
+alerts after at most 26 hours. Vercel also documents that cron delivery can
+occasionally miss a run or deliver one twice
+([Managing cron jobs](https://vercel.com/docs/cron-jobs/manage-cron-jobs#controlling-cron-job-concurrency)),
+so a single alert that clears by itself on the next pulse is not necessarily
+an outage: check the Vercel runtime logs before digging into the chat.
 
 Sources: [Vercel cron jobs](https://vercel.com/docs/cron-jobs),
 [managing them](https://vercel.com/docs/cron-jobs/manage-cron-jobs) and
