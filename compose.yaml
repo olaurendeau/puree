@@ -1,7 +1,7 @@
 services:
   app:
     build: ./docker
-    user: node
+    user: "${APP_USER:-node}"
     entrypoint: ["sh", "/app/docker/entrypoint.sh"]
     command: ["npm", "run", "dev"]
     environment:

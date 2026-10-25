@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  check:
+    name: check
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      # The runner owns the workspace as uid 1001, so the image's uid 1000
+      # (`node`) cannot write .next or tsconfig.tsbuildinfo. Run as root here
+      # so the command stays identical to the project's check.
+      APP_USER: root
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Lint, type-check and test
+        run: docker compose run --rm app sh -c 'npm run lint && npx tsc --noEmit && npm test'
+
+      - name: Stop containers
+        if: always()
+        run: docker compose down --remove-orphans
